@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+class WarehouseSystemInfoOfCompanyWidget;
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class WarehouseSystemMainWindow;
@@ -19,18 +22,34 @@ class WarehouseSystemMainWindow : public QMainWindow
 public:
     /*!
      * \brief Конструктор.
-     * \param parent - родительский виджет.
+     * \param _parent - родительский виджет.
      */
-    WarehouseSystemMainWindow(QWidget *parent = nullptr);
+    WarehouseSystemMainWindow(QWidget *_parent = nullptr);
     /*!
      * \brief Деструктор.
      */
     ~WarehouseSystemMainWindow();
 
+private slots:
+    /*!
+     * \brief Слот открытия виджета "Информация о компании".
+     */
+    void InfoOfCompanyWidgetSlot();
+
 private:
+    /*!
+     * \brief Подготавливает соеденения.
+     */
+    void prepareConnections();
+
     /*!
      * \brief Графический интерфейс.
      */
     Ui::WarehouseSystemMainWindow *m_ui;
+
+    /*!
+     * \brief Виджет информации о компании.
+     */
+    WarehouseSystemInfoOfCompanyWidget *m_infoOfCompanyWidget;
 };
 #endif // WAREHOUSESYSTEMMAINWINDOW_H

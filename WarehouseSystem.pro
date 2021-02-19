@@ -1,6 +1,6 @@
 QT       += core gui
 
-VERSION = 0.0.1
+VERSION = 0.1.0
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,14 +16,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+    src/WarehouseSystemInfoOfCompanyWidget.cpp \
 src/main.cpp \
 src/WarehouseSystemMainWindow.cpp
 
+
+
 HEADERS += \
-src/WarehouseSystemMainWindow.h
+    src/WarehouseSystemInfoOfCompanyWidget.h \
+src/WarehouseSystemMainWindow.h \
+
 
 FORMS += \
-src/WarehouseSystemMainWindow.ui
+    src/WarehouseSystemInfoOfCompanyWidget.ui \
+src/WarehouseSystemMainWindow.ui \
 
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
