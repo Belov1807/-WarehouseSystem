@@ -4,6 +4,7 @@
 #include "WarehouseSystemInfoOfCompanyWidget.h"
 #include "WarehouseSystemCustomersWidget.h"
 #include "WarehouseSystemProductWidget.h"
+#include "WarehouseSystemArrangeOrderWidget.h"
 
 WarehouseSystemMainWindow::WarehouseSystemMainWindow(QWidget *_parent) :
     QMainWindow(_parent),
@@ -27,6 +28,7 @@ void WarehouseSystemMainWindow::prepareConnections()
     connect(m_ui->pbInfoOfCompany, SIGNAL(clicked()), this, SLOT(infoOfCompanyWidgetSlot()));
     connect(m_ui->pbCustomers, SIGNAL(clicked()), this, SLOT(customersSlot()));
     connect(m_ui->pbProducts, SIGNAL(clicked()), this, SLOT(productsSlot()));
+    connect(m_ui->pbArrangeOrder, SIGNAL(clicked()), this, SLOT(arrangeOrderWidgetSlot()));
 
     connect(m_ui->pbExit, SIGNAL(clicked()), this, SLOT(close()));
 }
@@ -89,3 +91,23 @@ void WarehouseSystemMainWindow::productsSlot()
         m_productsWidget->show();
     }
 }
+
+void WarehouseSystemMainWindow::arrangeOrderWidgetSlot()
+{
+    if (m_arrangeOrderWidget == nullptr)
+    {
+        m_arrangeOrderWidget = new WarehouseSystemArrangeOrderWidget();
+
+        m_arrangeOrderWidget->show();
+    }
+    else if (m_arrangeOrderWidget != nullptr &&
+             m_arrangeOrderWidget->isVisible() == false)
+    {
+        m_arrangeOrderWidget->close();
+        delete m_arrangeOrderWidget;
+
+        m_arrangeOrderWidget = new WarehouseSystemArrangeOrderWidget();
+        m_arrangeOrderWidget->show();
+    }
+}
+

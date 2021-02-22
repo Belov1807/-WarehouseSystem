@@ -6,7 +6,7 @@
 class WarehouseSystemInfoOfCompanyWidget;
 class WarehouseSystemCustomersWidget;
 class WarehouseSystemProductWidget;
-
+class WarehouseSystemArrangeOrderWidget;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -45,6 +45,10 @@ private slots:
      * \brief Слот открытия виджета "Продукция".
      */
     void productsSlot();
+    /*!
+     * \brief Слот открытия виджета "Оформление заказа".
+     */
+    void arrangeOrderWidgetSlot();
 
 private:
     /*!
@@ -69,5 +73,9 @@ private:
      * \brief Виджет "Продукция".
      */
     WarehouseSystemProductWidget *m_productsWidget;
+    /*!
+     * \brief Виджет "Оформление заказа".
+     */
+    WarehouseSystemArrangeOrderWidget *m_arrangeOrderWidget;
 };
 #endif // WAREHOUSESYSTEMMAINWINDOW_H
