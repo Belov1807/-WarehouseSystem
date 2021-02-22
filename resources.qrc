@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/database">
+        <file alias="database">resources/database/WarehouseSystemDB.db3</file>
+    </qresource>
+</RCC>

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 class WarehouseSystemInfoOfCompanyWidget;
+class WarehouseSystemCustomersWidget;
 
 
 QT_BEGIN_NAMESPACE
@@ -35,6 +36,10 @@ private slots:
      * \brief Слот открытия виджета "Информация о компании".
      */
     void InfoOfCompanyWidgetSlot();
+    /*!
+     * \brief Слот открытия виджета "Покупатели".
+     */
+    void CustomersSlot();
 
 private:
     /*!
@@ -51,5 +56,9 @@ private:
      * \brief Виджет информации о компании.
      */
     WarehouseSystemInfoOfCompanyWidget *m_infoOfCompanyWidget;
+    /*!
+     * \brief Виджет "Покупатели".
+     */
+    WarehouseSystemCustomersWidget *m_customersWidget;
 };
 #endif // WAREHOUSESYSTEMMAINWINDOW_H
