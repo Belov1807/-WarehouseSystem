@@ -1,27 +1,27 @@
-#ifndef WAREHOUSESYSTEMCUSTOMERSTABLEMODEL_H
-#define WAREHOUSESYSTEMCUSTOMERSTABLEMODEL_H
+#ifndef WAREHOUSESYSTEMPRODUCTTABLEMODEL_H
+#define WAREHOUSESYSTEMPRODUCTTABLEMODEL_H
 
 #include <QAbstractTableModel>
 #include <QVariant>
 
 class WarehouseSystemDataManager;
-class WarehouseSystemCustomer;
+class WarehouseSystemProduct;
 
 /*!
- * \brief Класс табличной модели покупателей.
+ * \brief Класс табличной модели продукции.
  */
-class WarehouseSystemCustomersTableModel   : public QAbstractTableModel
+class WarehouseSystemProductTableModel  : public QAbstractTableModel
 {
-public:    
+public:
     /*!
-     * \brief Конструктор.
+     * \brief Констуктор табличной модели.
      */
-    WarehouseSystemCustomersTableModel();
+    WarehouseSystemProductTableModel();
 
     /*!
      * \brief Возвращает количество строк.
      * \param _parent - индекс модели.
-     * \return Количеств строк.
+     * \return Количество строк.
      */
     int rowCount(const QModelIndex &_parent = QModelIndex()) const;
     /*!
@@ -38,13 +38,12 @@ public:
      * \return Значение элемента.
      */
     QVariant data(const QModelIndex &_index, int _role) const;
-
     /*!
      * \brief Возвращает название колонки.
      * \param _section - номер колонки.
      * \param _orientation - ориентация.
      * \param _role - роль.
-     * \return название колонки.
+     * \return Название колонки.
      */
     QVariant headerData(int _section, Qt::Orientation _orientation, int _role = Qt::DisplayRole) const;
 
@@ -53,12 +52,12 @@ private:
      * \brief Колонки модели.
      */
     enum TableColumn {
-                        nameColumn,     ///< Колонка имени.
-                        innColumn,      ///< Колонка ИНН.
-                        phoneColumn,    ///< Колонка номера телефона.
-                        addressColumn,  ///< Колонка адреса.
+                        nameColumn,                 ///< Колонка имени.
+                        countColumn,                ///< Колонка количества.
+                        typeColumn,                 ///< Колонка еденицы измерения.
+                        purchasePriceColumn,        ///< Колонка цены закупки.
 
-                        columnsCount    ///< Количество колонок.
+                        columnsCount                ///< Количество колонок.
     };
 
     /*!
@@ -67,4 +66,4 @@ private:
     WarehouseSystemDataManager *m_dataManager;
 };
 
-#endif // WAREHOUSESYSTEMCUSTOMERSTABLEMODEL_H
+#endif // WAREHOUSESYSTEMPRODUCTTABLEMODEL_H

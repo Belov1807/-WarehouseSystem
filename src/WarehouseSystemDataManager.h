@@ -3,10 +3,9 @@
 
 #include <QList>
 
-#include "WarehouseSystemCustomer.h"
-
-class WarehouseSystemCustomer;
 class WarehouseSystemDataBaseManager;
+class WarehouseSystemCustomer;
+class WarehouseSystemProduct;
 
 /*!
  * \brief Класс менеджера данных.
@@ -23,29 +22,48 @@ public:
      * \brief Устанавливает список покупателей.
      */
     void setCustomersList();
+    /*!
+     * \brief Устанавливает список продукции.
+     */
+    void setProductsList();
 
     /*!
-     * \brief Возвращает список покупателей по индексу.
+     * \brief Возвращает покупателя по индексу.
      * \param _index - индекс.
-     * \return список покупателей.
+     * \return покупатель.
      */
-    WarehouseSystemCustomer* customer(int _index);
+    WarehouseSystemCustomer* customerAt(int _index);
+    /*!
+     * \brief Возвращает продукцию по индексу.
+     * \param _index - индекс.
+     * \return продукция.
+     */
+    WarehouseSystemProduct* productAt(int _index);
 
     /*!
      * \brief Возвращает количество покупателей.
      * \return количество покупателей.
      */
     int customersCount();
-
     /*!
-     * \brief Список покупателей.
+     * \brief Возвращает количество продукции.
+     * \return количество продукции.
      */
-    QList<WarehouseSystemCustomer*> m_customersList;
+    int productsCount();
 
     /*!
      * \brief Менеджер БД.
      */
     WarehouseSystemDataBaseManager *m_dataBaseManager;
+
+    /*!
+     * \brief Список покупателей.
+     */
+    QList<WarehouseSystemCustomer*> m_customersList;
+    /*!
+     * \brief Список продукции.
+     */
+    QList<WarehouseSystemProduct*> m_productsList;
 };
 
 #endif // WAREHOUSESYSTEMDATAMANAGER_H

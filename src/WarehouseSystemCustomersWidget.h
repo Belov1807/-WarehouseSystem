@@ -29,9 +29,14 @@ public:
 
 private:
     /*!
+     * \brief Подготавливает соеденения.
+     */
+    void prepareConnections();
+    /*!
      * \brief Подготавливает отображение.
      */
     void prepareUi();
+
     /*!
      * \brief Графический интерфейс.
      */

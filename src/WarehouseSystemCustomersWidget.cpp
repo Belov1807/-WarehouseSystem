@@ -8,12 +8,19 @@ WarehouseSystemCustomersWidget::WarehouseSystemCustomersWidget(QWidget *_parent)
     m_ui(new Ui::WarehouseSystemCustomersWidget)
 {
     m_ui->setupUi(this);
+
+    prepareConnections();
     prepareUi();
 }
 
 WarehouseSystemCustomersWidget::~WarehouseSystemCustomersWidget()
 {
     delete m_ui;
+}
+
+void WarehouseSystemCustomersWidget::prepareConnections()
+{
+    connect(m_ui->pbClose, SIGNAL(clicked()), this, SLOT(close()));
 }
 
 void WarehouseSystemCustomersWidget::prepareUi()

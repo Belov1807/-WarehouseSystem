@@ -1,6 +1,7 @@
 #include "WarehouseSystemDataBaseManager.h"
 
 #include "WarehouseSystemCustomer.h"
+#include "WarehouseSystemProduct.h"
 
 #include <QSqlQuery>
 #include <QMessageBox>
@@ -12,6 +13,7 @@ WarehouseSystemDataBaseManager::WarehouseSystemDataBaseManager()
     createConnection();
 
     setCustomersList();
+    setProductsList();
 }
 
 void WarehouseSystemDataBaseManager::createConnection()
@@ -46,9 +48,31 @@ void WarehouseSystemDataBaseManager::setCustomersList()
     }
 }
 
+void WarehouseSystemDataBaseManager::setProductsList()
+{
+    //Осуществляем запрос
+    QSqlQuery query;
+    query.exec("SELECT id, name, count, unit_of_measure, purchase_price FROM product");
+
+
+    while (query.next())
+    {
+        WarehouseSystemProduct *product = new WarehouseSystemProduct(query.value("id").toInt(),
+                                                                     query.value("name").toString(),
+                                                                     query.value("count").toDouble(),
+                                                                     query.value("unit_of_measure").toBool(),
+                                                                     query.value("purchase_price").toDouble());
+
+        m_productsList.append(product);
+    }
+}
+
 QList<WarehouseSystemCustomer*> WarehouseSystemDataBaseManager::customersList()
 {
     return m_customersList;
 }
 
-
+QList<WarehouseSystemProduct*> WarehouseSystemDataBaseManager::productList()
+{
+    return m_productsList;
+}

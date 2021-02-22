@@ -3,11 +3,14 @@
 
 #include "WarehouseSystemInfoOfCompanyWidget.h"
 #include "WarehouseSystemCustomersWidget.h"
+#include "WarehouseSystemProductWidget.h"
 
 WarehouseSystemMainWindow::WarehouseSystemMainWindow(QWidget *_parent) :
     QMainWindow(_parent),
     m_ui(new Ui::WarehouseSystemMainWindow),
-    m_infoOfCompanyWidget(nullptr)
+    m_infoOfCompanyWidget(nullptr),
+    m_customersWidget(nullptr),
+    m_productsWidget(nullptr)
 {
     m_ui->setupUi(this);
 
@@ -21,13 +24,14 @@ WarehouseSystemMainWindow::~WarehouseSystemMainWindow()
 
 void WarehouseSystemMainWindow::prepareConnections()
 {
-    connect(m_ui->pbInfoOfCompany, SIGNAL(clicked()), this, SLOT(InfoOfCompanyWidgetSlot()));
-    connect(m_ui->pbCustomers, SIGNAL(clicked()), this, SLOT(CustomersSlot()));
+    connect(m_ui->pbInfoOfCompany, SIGNAL(clicked()), this, SLOT(infoOfCompanyWidgetSlot()));
+    connect(m_ui->pbCustomers, SIGNAL(clicked()), this, SLOT(customersSlot()));
+    connect(m_ui->pbProducts, SIGNAL(clicked()), this, SLOT(productsSlot()));
 
     connect(m_ui->pbExit, SIGNAL(clicked()), this, SLOT(close()));
 }
 
-void WarehouseSystemMainWindow::InfoOfCompanyWidgetSlot()
+void WarehouseSystemMainWindow::infoOfCompanyWidgetSlot()
 {
 
     if (m_infoOfCompanyWidget == nullptr)
@@ -47,7 +51,7 @@ void WarehouseSystemMainWindow::InfoOfCompanyWidgetSlot()
     }
 }
 
-void WarehouseSystemMainWindow::CustomersSlot()
+void WarehouseSystemMainWindow::customersSlot()
 {
     if (m_customersWidget == nullptr)
     {
@@ -63,5 +67,25 @@ void WarehouseSystemMainWindow::CustomersSlot()
 
         m_customersWidget = new WarehouseSystemCustomersWidget();
         m_customersWidget->show();
+    }
+}
+
+void WarehouseSystemMainWindow::productsSlot()
+
+{
+    if (m_productsWidget == nullptr)
+    {
+        m_productsWidget = new WarehouseSystemProductWidget();
+
+        m_productsWidget->show();
+    }
+    else if (m_productsWidget != nullptr &&
+             m_productsWidget->isVisible() == false)
+    {
+        m_productsWidget->close();
+        delete m_productsWidget;
+
+        m_productsWidget = new WarehouseSystemProductWidget();
+        m_productsWidget->show();
     }
 }

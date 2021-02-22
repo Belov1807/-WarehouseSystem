@@ -1,6 +1,6 @@
 QT       += core gui sql
 
-VERSION = 0.2.0
+VERSION = 0.3.0
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,33 +18,34 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
 src/WarehouseSystemCustomer.cpp \
 src/WarehouseSystemCustomersTableModel.cpp \
-    src/WarehouseSystemCustomersWidget.cpp \
+src/WarehouseSystemCustomersWidget.cpp \
 src/WarehouseSystemDataBaseManager.cpp \
 src/WarehouseSystemDataManager.cpp \
-    src/WarehouseSystemInfoOfCompanyWidget.cpp \
+src/WarehouseSystemInfoOfCompanyWidget.cpp \
+src/WarehouseSystemProduct.cpp \
+src/WarehouseSystemProductTableModel.cpp \
+src/WarehouseSystemProductWidget.cpp \
 src/main.cpp \
 src/WarehouseSystemMainWindow.cpp
-
-
 
 HEADERS += \
 src/WarehouseSystemCustomer.h \
 src/WarehouseSystemCustomersTableModel.h \
-    src/WarehouseSystemCustomersWidget.h \
+src/WarehouseSystemCustomersWidget.h \
 src/WarehouseSystemDataBaseManager.h \
 src/WarehouseSystemDataManager.h \
-    src/WarehouseSystemInfoOfCompanyWidget.h \
-src/WarehouseSystemMainWindow.h
-
+src/WarehouseSystemInfoOfCompanyWidget.h \
+src/WarehouseSystemMainWindow.h \
+src/WarehouseSystemProduct.h \
+src/WarehouseSystemProductTableModel.h \
+src/WarehouseSystemProductWidget.h
 
 FORMS += \
-    src/WarehouseSystemCustomersWidget.ui \
-    src/WarehouseSystemInfoOfCompanyWidget.ui \
-src/WarehouseSystemMainWindow.ui
+src/WarehouseSystemCustomersWidget.ui \
+src/WarehouseSystemInfoOfCompanyWidget.ui \
+src/WarehouseSystemMainWindow.ui \
+src/WarehouseSystemProductWidget.ui
 
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += \
-    resources.qrc

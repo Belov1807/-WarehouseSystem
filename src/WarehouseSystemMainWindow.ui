@@ -61,14 +61,14 @@
         <item>
          <widget class="QPushButton" name="pbCustomers">
           <property name="text">
-           <string>Партнеры</string>
+           <string>Покупатели</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="pbProducts">
           <property name="text">
-           <string>Проверить наличие товара</string>
+           <string>Продукция</string>
           </property>
          </widget>
         </item>

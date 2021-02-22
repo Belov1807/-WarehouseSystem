@@ -3,7 +3,6 @@
 #include "WarehouseSystemCustomer.h"
 #include "WarehouseSystemDataManager.h"
 
-
 WarehouseSystemCustomersTableModel::WarehouseSystemCustomersTableModel() :
     m_dataManager(new WarehouseSystemDataManager)
 {
@@ -30,27 +29,27 @@ QVariant WarehouseSystemCustomersTableModel::data(const QModelIndex &_index, int
     {
         if (_index.column() == nameColumn)
         {
-            return m_dataManager->customer(_index.row())->name();
+            return m_dataManager->customerAt(_index.row())->name();
         }
         if (_index.column() == innColumn)
         {
-            return m_dataManager->customer(_index.row())->inn();
+            return m_dataManager->customerAt(_index.row())->inn();
         }
         if (_index.column() == phoneColumn)
         {
-            return m_dataManager->customer(_index.row())->phone();
+            return m_dataManager->customerAt(_index.row())->phone();
         }
         if (_index.column() == addressColumn)
         {
-            return m_dataManager->customer(_index.row())->address();
+            return m_dataManager->customerAt(_index.row())->address();
         }
     }
     return QVariant();
 }
 
 QVariant WarehouseSystemCustomersTableModel::headerData(int _section,
-                                                      Qt::Orientation _orientation,
-                                                      int _role) const
+                                                        Qt::Orientation _orientation,
+                                                        int _role) const
 {
     if (!_role == Qt::DisplayRole)
     {

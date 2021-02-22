@@ -5,6 +5,7 @@
 
 class WarehouseSystemInfoOfCompanyWidget;
 class WarehouseSystemCustomersWidget;
+class WarehouseSystemProductWidget;
 
 
 QT_BEGIN_NAMESPACE
@@ -35,11 +36,15 @@ private slots:
     /*!
      * \brief Слот открытия виджета "Информация о компании".
      */
-    void InfoOfCompanyWidgetSlot();
+    void infoOfCompanyWidgetSlot();
     /*!
      * \brief Слот открытия виджета "Покупатели".
      */
-    void CustomersSlot();
+    void customersSlot();
+    /*!
+     * \brief Слот открытия виджета "Продукция".
+     */
+    void productsSlot();
 
 private:
     /*!
@@ -60,5 +65,9 @@ private:
      * \brief Виджет "Покупатели".
      */
     WarehouseSystemCustomersWidget *m_customersWidget;
+    /*!
+     * \brief Виджет "Продукция".
+     */
+    WarehouseSystemProductWidget *m_productsWidget;
 };
 #endif // WAREHOUSESYSTEMMAINWINDOW_H
