@@ -1,6 +1,6 @@
 QT       += core gui sql
 
-VERSION = 0.4.0
+VERSION = 0.5.0
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -23,6 +23,8 @@ src/WarehouseSystemCustomersWidget.cpp \
 src/WarehouseSystemDataBaseManager.cpp \
 src/WarehouseSystemDataManager.cpp \
 src/WarehouseSystemInfoOfCompanyWidget.cpp \
+    src/WarehouseSystemOrder.cpp \
+    src/WarehouseSystemOrderOnePosition.cpp \
 src/WarehouseSystemProduct.cpp \
 src/WarehouseSystemProductTableModel.cpp \
 src/WarehouseSystemProductWidget.cpp \
@@ -38,6 +40,8 @@ src/WarehouseSystemDataBaseManager.h \
 src/WarehouseSystemDataManager.h \
 src/WarehouseSystemInfoOfCompanyWidget.h \
 src/WarehouseSystemMainWindow.h \
+    src/WarehouseSystemOrder.h \
+    src/WarehouseSystemOrderOnePosition.h \
 src/WarehouseSystemProduct.h \
 src/WarehouseSystemProductTableModel.h \
 src/WarehouseSystemProductWidget.h

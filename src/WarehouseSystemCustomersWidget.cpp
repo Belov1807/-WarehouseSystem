@@ -28,4 +28,7 @@ void WarehouseSystemCustomersWidget::prepareUi()
     WarehouseSystemCustomersTableModel *model = new WarehouseSystemCustomersTableModel();
 
     m_ui->tvCustomers->setModel(model);
+    //Растягивает ширину столбцов на всю длину окна.
+    m_ui->tvCustomers->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    //m_ui->tvCustomers->
 }

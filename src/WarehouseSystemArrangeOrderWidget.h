@@ -3,6 +3,7 @@
 
 #include <QWidget>
 
+class WarehouseSystemOrder;
 class WarehouseSystemDataManager;
 class WarehouseSystemProduct;
 
@@ -28,6 +29,20 @@ public:
      */
     ~WarehouseSystemArrangeOrderWidget();
 
+private slots:
+    /*!
+     * \brief Слот выбора продукта.
+     */
+    void changedProductSlot();
+    /*!
+     * \brief Слот изменения количества продукции.
+     */
+    void productsCountChangeSlot();
+    /*!
+     * \brief Слот добавления продукции.
+     */
+    void addProductSlot();
+
 private:
     /*!
      * \brief Подготавливает соеденения.
@@ -47,6 +62,11 @@ private:
      * \brief Менеджер данных.
      */
     WarehouseSystemDataManager *m_dataManager;
+
+    /*!
+     * \brief Заказ.
+     */
+    WarehouseSystemOrder *m_order;
 };
 
 #endif // WAREHOUSESYSTEMARRANGEORDER_H

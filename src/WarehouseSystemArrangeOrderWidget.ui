@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>417</width>
-    <height>637</height>
+    <height>660</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,6 +33,13 @@
              <widget class="QLabel" name="lProductHeader">
               <property name="text">
                <string>Товар</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lChangedProduct">
+              <property name="text">
+               <string>TextLabel</string>
               </property>
              </widget>
             </item>
@@ -65,7 +72,11 @@
              </widget>
             </item>
             <item>
-             <widget class="QTextEdit" name="teProductsCount"/>
+             <widget class="QTextEdit" name="teProductsCount">
+              <property name="inputMethodHints">
+               <set>Qt::ImhMultiLine</set>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -112,7 +123,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QTextEdit" name="textEdit"/>
+             <widget class="QTextEdit" name="teTotalCost"/>
             </item>
            </layout>
           </item>

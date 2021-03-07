@@ -29,4 +29,6 @@ void WarehouseSystemProductWidget::prepareUi()
     WarehouseSystemProductTableModel *model = new WarehouseSystemProductTableModel();
 
     m_ui->tvProducts->setModel(model);
+    //Растягивает ширину столбцов на всю длину окна.
+    m_ui->tvProducts->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
