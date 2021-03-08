@@ -26,22 +26,22 @@ QVariant WarehouseSystemProductTableModel::data(const QModelIndex &_index, int _
     }
 
     if (_role == Qt::DisplayRole)
-    {
+    {   
         if (_index.column() == nameColumn)
         {
-            return m_dataManager->productAt(_index.row())->name();
+            return m_dataManager->nameProductById(m_dataManager->idProductByIndex(_index.row()));
         }
         if (_index.column() == countColumn)
         {
-            return m_dataManager->productAt(_index.row())->count();
+            return m_dataManager->countProductById(m_dataManager->idProductByIndex(_index.row()));
         }
         if (_index.column() == typeColumn)
         {
-            return m_dataManager->productAt(_index.row())->unitOfMeasure();
+            return m_dataManager->unitOfMeasureProductById(m_dataManager->idProductByIndex(_index.row()));
         }
         if (_index.column() == purchasePriceColumn)
         {
-            return m_dataManager->productAt(_index.row())->purchasePrice();
+            return m_dataManager->purchasePriceProductById(m_dataManager->idProductByIndex(_index.row()));
         }
     }
     return QVariant();

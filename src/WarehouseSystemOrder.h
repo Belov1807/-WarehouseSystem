@@ -21,10 +21,10 @@ public:
     WarehouseSystemOrder(int _id = int(), WarehouseSystemCustomer *_customer = nullptr);
 
     /*!
-     * \brief Установлевает выбранную продукцию.
-     * \param _changedProduct - выбранная продукция.
+     * \brief Устанавливает идентификатор выбранной продукции.
+     * \param _id - идентификатор выбранного продукта.
      */
-    void setChangedProduct(WarehouseSystemProduct *_changedProduct);
+    void setChangedProduct(int _id);
 
     /*!
      * \brief Устанавливает количество выбранной продукции.
@@ -48,6 +48,11 @@ public:
      */
     void addPosition();
 
+    /*!
+     * \brief Возвращает стоимость текущей позиции заказа.
+     * \return стоимость текущей позиции заказа.
+     */
+    double positionCost() const;
     /*!
      * \brief Возвращает общую стоимость заказа.
      * \return общая стоимость заказа.

@@ -28,11 +28,16 @@ QString WarehouseSystemProduct::unitOfMeasure() const
     }
     else
     {
-        return "кг";
+        return "кг.";
     }
 }
 
 double WarehouseSystemProduct::purchasePrice() const
 {
     return m_purchasePrice;
+}
+
+int WarehouseSystemProduct::id() const
+{
+    return m_id;
 }

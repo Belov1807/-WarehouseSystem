@@ -4,6 +4,7 @@
 #include <QString>
 
 class WarehouseSystemProduct;
+class WarehouseSystemDataManager;
 
 /*!
  * \brief Класс ондой позиции заказа.
@@ -13,9 +14,9 @@ class WarehouseSystemOrderOnePosition
 public:
     /*!
      * \brief Конструктор.
-     * \param _product - продукция.
+     * \param _id - идентификатор продукции.
      */
-    WarehouseSystemOrderOnePosition(WarehouseSystemProduct *_product);
+    WarehouseSystemOrderOnePosition(int _id);
 
     /*!
      * \brief Устанавливает количество продукции.
@@ -41,6 +42,8 @@ public:
     QString info() const;
 
 private:
+    int m_idProduct;
+
     /*!
      * \brief Продукция.
      */
@@ -54,6 +57,11 @@ private:
      * \brief Стоимость.
      */
     double m_theCost;
+
+    /*!
+     * \brief Менеджер данных.
+     */
+    WarehouseSystemDataManager *m_dataManager;
 };
 
 #endif // WAREHOUSESYSTEMORDERONEPOSITION_H

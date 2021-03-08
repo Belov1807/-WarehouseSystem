@@ -39,6 +39,11 @@ public:
      * \return цена закупки.
      */
     double purchasePrice() const;
+    /*!
+     * \brief Возвращает идентификатор.
+     * \return идентификатор.
+     */
+    int id() const;
 
 private:
     /*!

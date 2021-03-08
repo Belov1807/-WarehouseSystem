@@ -1,25 +1,26 @@
 #include "WarehouseSystemOrderOnePosition.h"
 
 #include "WarehouseSystemProduct.h"
+#include "WarehouseSystemDataManager.h"
 
-WarehouseSystemOrderOnePosition::WarehouseSystemOrderOnePosition(WarehouseSystemProduct *_product) :
-    m_product(_product),
+WarehouseSystemOrderOnePosition::WarehouseSystemOrderOnePosition(int _id) :
+    m_idProduct(_id),
     m_productCount(0),
-    m_theCost(0)
+    m_theCost(0),
+    m_dataManager(new WarehouseSystemDataManager)
 {
 }
 
 void WarehouseSystemOrderOnePosition::setProductCount(double _productCount)
 {
     m_productCount = _productCount;
-}
 
+    calculationOfTheCost();
+}
 void WarehouseSystemOrderOnePosition::calculationOfTheCost()
 {
-    // Выбранная продукция.
-    //WarehouseSystemProduct *changedProduct = m_dataManager->productAt(m_ui->cbProducts->currentIndex() - 1);
     // Цена закупки продукции выбранного вида.
-    double purchasePrice = m_product->purchasePrice();
+    double purchasePrice = m_dataManager->purchasePriceProductById(m_idProduct);
     // Количество продукции выбранного вида.
     //m_changedCountProduct;
     // Коээфицент прибыли.
@@ -43,10 +44,10 @@ QString WarehouseSystemOrderOnePosition::info() const
 {
     QString info = QString();
 
-    info.append(m_product->name() + " x " +
-                             QString::number(m_productCount) + " " +
-                             m_product->unitOfMeasure() + " - " +
-                             QString::number(m_theCost) + " Р.");
+    info.append(m_dataManager->nameProductById(m_idProduct) + " x " +
+                QString::number(m_productCount) + " " +
+                m_dataManager->unitOfMeasureProductById(m_idProduct) + " - " +
+                QString::number(m_theCost) + " Р.");
 
     return info;
 }

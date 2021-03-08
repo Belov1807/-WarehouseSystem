@@ -5,7 +5,6 @@
 
 class WarehouseSystemOrder;
 class WarehouseSystemDataManager;
-class WarehouseSystemProduct;
 
 namespace Ui {
 class WarehouseSystemArrangeOrderWidget;

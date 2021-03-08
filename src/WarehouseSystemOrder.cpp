@@ -11,21 +11,22 @@ WarehouseSystemOrder::WarehouseSystemOrder(int _id, WarehouseSystemCustomer *_cu
 {
 }
 
-void WarehouseSystemOrder::setChangedProduct(WarehouseSystemProduct *_changedProduct)
+void WarehouseSystemOrder::setChangedProduct(int _id)
 {
-    m_orderPosition = new WarehouseSystemOrderOnePosition(_changedProduct);
+    m_orderPosition = new WarehouseSystemOrderOnePosition(_id);
 }
 
 void WarehouseSystemOrder::setChangedProductCount(double _changedProductCount)
 {
-    m_orderPosition->setProductCount(_changedProductCount);
+    if (m_orderPosition != nullptr)
+    {
+        m_orderPosition->setProductCount(_changedProductCount);
+    }
 }
 
 QString WarehouseSystemOrder::infoProductsList() const
 {
     QString positionsListTitle = QString();
-
-    m_orderPosition->calculationOfTheCost();
 
     foreach (auto position, m_positionsList)
     {
@@ -37,6 +38,11 @@ QString WarehouseSystemOrder::infoProductsList() const
         }
     }
     return positionsListTitle;
+}
+
+double WarehouseSystemOrder::positionCost() const
+{
+    return m_orderPosition->totalCost();
 }
 
 void WarehouseSystemOrder::addPosition()

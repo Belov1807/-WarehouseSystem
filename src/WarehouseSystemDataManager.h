@@ -19,26 +19,47 @@ public:
     WarehouseSystemDataManager();
 
     /*!
-     * \brief Устанавливает список покупателей.
-     */
-    void setCustomersList();
-    /*!
-     * \brief Устанавливает список продукции.
-     */
-    void setProductsList();
-
-    /*!
      * \brief Возвращает покупателя по индексу.
      * \param _index - индекс.
      * \return покупатель.
      */
     WarehouseSystemCustomer* customerAt(int _index);
+
     /*!
-     * \brief Возвращает продукцию по индексу.
-     * \param _index - индекс.
-     * \return продукция.
+     * \brief Возвращает список идентификаторов всей продукции.
+     * \return список идентификаторов всей продукции.
      */
-    WarehouseSystemProduct* productAt(int _index);
+    QList<int> idProductList() const;
+    /*!
+     * \brief Возвращает идентификатор продукции по индексу.
+     * \param index - индекс.
+     * \return идентификатор продукции по индексу.
+     */
+    int idProductByIndex(int _index);
+    /*!
+     * \brief Возвращает имя продукции по идентификатору.
+     * \param _id - идентификатор.
+     * \return имя продукции по идентификатору.
+     */
+    QString nameProductById(int _id) const;
+    /*!
+     * \brief Возвращает количество подукции о идентификатору.
+     * \param _id - идентификатор.
+     * \return количество подукции о идентификатору.
+     */
+    double countProductById(int _id) const;
+    /*!
+     * \brief Возвращает ед. измерения. подукции о идентификатору.
+     * \param _id - идентификатор.
+     * \return ед. измерения. подукции о идентификатору.
+     */
+    QString unitOfMeasureProductById(int _id) const;
+    /*!
+     * \brief Возвращает цену закупки подукции о идентификатору.
+     * \param _id - идентификатор.
+     * \return цена закупки подукции о идентификатору.
+     */
+    double purchasePriceProductById(int _id) const;
 
     /*!
      * \brief Возвращает количество покупателей.
@@ -51,6 +72,16 @@ public:
      */
     int productsCount();
 
+private:
+    /*!
+     * \brief Устанавливает список покупателей.
+     */
+    void setCustomersList();
+    /*!
+     * \brief Устанавливает продукцию.
+     */
+    void setProducts();
+
     /*!
      * \brief Менеджер БД.
      */
@@ -60,10 +91,16 @@ public:
      * \brief Список покупателей.
      */
     QList<WarehouseSystemCustomer*> m_customersList;
+
     /*!
-     * \brief Список продукции.
+     * \brief Список идентификаторов всех продуктов.
      */
-    QList<WarehouseSystemProduct*> m_productsList;
+    QList<int> m_idProductsList;
+
+    /*!
+     * \brief словарь продукции(идентификатор-продукт).
+     */
+    QMap<int, WarehouseSystemProduct*> m_productsMap;
 };
 
 #endif // WAREHOUSESYSTEMDATAMANAGER_H
