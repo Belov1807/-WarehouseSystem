@@ -1,6 +1,5 @@
 #include "WarehouseSystemCustomersTableModel.h"
 
-#include "WarehouseSystemCustomer.h"
 #include "WarehouseSystemDataManager.h"
 
 WarehouseSystemCustomersTableModel::WarehouseSystemCustomersTableModel() :
@@ -27,21 +26,23 @@ QVariant WarehouseSystemCustomersTableModel::data(const QModelIndex &_index, int
 
     if (_role == Qt::DisplayRole)
     {
+        int idCustomer = m_dataManager->idCustomerByIndex(_index.row());
+
         if (_index.column() == nameColumn)
         {
-            return m_dataManager->customerAt(_index.row())->name();
+            return m_dataManager->nameCustomerById(idCustomer);
         }
         if (_index.column() == innColumn)
         {
-            return m_dataManager->customerAt(_index.row())->inn();
+            return m_dataManager->innCustomerById(idCustomer);
         }
         if (_index.column() == phoneColumn)
         {
-            return m_dataManager->customerAt(_index.row())->phone();
+            return m_dataManager->phoneCustomerById(idCustomer);
         }
         if (_index.column() == addressColumn)
         {
-            return m_dataManager->customerAt(_index.row())->address();
+            return m_dataManager->addressCustomerById(idCustomer);
         }
     }
     return QVariant();

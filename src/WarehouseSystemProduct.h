@@ -20,30 +20,30 @@ public:
     WarehouseSystemProduct(int _id, QString _name, double _count, bool _unitOfMeasure, double _purchasePrice);
 
     /*!
-     * \brief Возвращает название.
-     * \return название.
-     */
-    QString name() const;
-    /*!
-     * \brief Возвращает количество.
-     * \return количество.
-     */
-    double count() const;
-    /*!
-     * \brief Возвращает ед. измерения.
-     * \return ед. измерения.
-     */
-    QString unitOfMeasure() const;
-    /*!
-     * \brief Возвращает цену закупки.
-     * \return цена закупки.
-     */
-    double purchasePrice() const;
-    /*!
      * \brief Возвращает идентификатор.
      * \return идентификатор.
      */
     int id() const;
+    /*!
+     * \brief Возвращает название.
+     * \return название продукции.
+     */
+    QString name() const;
+    /*!
+     * \brief Возвращает количество.
+     * \return количество продукции.
+     */
+    double count() const;
+    /*!
+     * \brief Возвращает ед. измерения.
+     * \return ед. измерения продукции.
+     */
+    QString unitOfMeasure() const;
+    /*!
+     * \brief Возвращает цену закупки.
+     * \return цена закупки продукции.
+     */
+    double purchasePrice() const;
 
 private:
     /*!

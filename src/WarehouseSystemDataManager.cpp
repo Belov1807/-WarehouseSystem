@@ -7,13 +7,17 @@
 WarehouseSystemDataManager::WarehouseSystemDataManager() :
     m_dataBaseManager(new WarehouseSystemDataBaseManager)
 {
-    setCustomersList();
+    setCustomers();
     setProducts();
 }
 
-void WarehouseSystemDataManager::setCustomersList()
+void WarehouseSystemDataManager::setCustomers()
 {
-    m_customersList.append(m_dataBaseManager->customersList());
+    foreach (auto customer, m_dataBaseManager->customersList())
+    {
+        m_customersMap.insert(customer->id(), customer);
+    }
+    m_idCustomersList.append(m_customersMap.keys());
 }
 
 void WarehouseSystemDataManager::setProducts()
@@ -27,17 +31,12 @@ void WarehouseSystemDataManager::setProducts()
 
 int WarehouseSystemDataManager::customersCount()
 {
-    return m_customersList.count();
+    return m_customersMap.count();
 }
 
 int WarehouseSystemDataManager::productsCount()
 {
     return m_productsMap.count();
-}
-
-WarehouseSystemCustomer* WarehouseSystemDataManager::customerAt(int _index)
-{
-    return m_customersList.at(_index);
 }
 
 QList<int> WarehouseSystemDataManager::idProductList() const
@@ -70,3 +69,32 @@ double WarehouseSystemDataManager::purchasePriceProductById(int _id) const
     return m_productsMap.value(_id)->purchasePrice();
 }
 
+QList<int> WarehouseSystemDataManager::idCustomersList() const
+{
+    return  m_idCustomersList;
+}
+
+int WarehouseSystemDataManager::idCustomerByIndex(int _index)
+{
+    return m_idCustomersList.at(_index);
+}
+
+QString WarehouseSystemDataManager::nameCustomerById(int _id) const
+{
+    return m_customersMap.value(_id)->name();
+}
+
+QString WarehouseSystemDataManager::innCustomerById(int _id) const
+{
+    return m_customersMap.value(_id)->inn();
+}
+
+QString WarehouseSystemDataManager::phoneCustomerById(int _id) const
+{
+    return m_customersMap.value(_id)->phone();
+}
+
+QString WarehouseSystemDataManager::addressCustomerById(int _id) const
+{
+    return m_customersMap.value(_id)->address();
+}

@@ -9,6 +9,10 @@ WarehouseSystemProduct::WarehouseSystemProduct(int _id, QString _name, double _c
 {
 }
 
+int WarehouseSystemProduct::id() const
+{
+    return m_id;
+}
 
 QString WarehouseSystemProduct::name() const
 {
@@ -35,9 +39,4 @@ QString WarehouseSystemProduct::unitOfMeasure() const
 double WarehouseSystemProduct::purchasePrice() const
 {
     return m_purchasePrice;
-}
-
-int WarehouseSystemProduct::id() const
-{
-    return m_id;
 }

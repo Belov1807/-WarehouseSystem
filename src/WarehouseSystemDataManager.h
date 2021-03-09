@@ -19,13 +19,6 @@ public:
     WarehouseSystemDataManager();
 
     /*!
-     * \brief Возвращает покупателя по индексу.
-     * \param _index - индекс.
-     * \return покупатель.
-     */
-    WarehouseSystemCustomer* customerAt(int _index);
-
-    /*!
      * \brief Возвращает список идентификаторов всей продукции.
      * \return список идентификаторов всей продукции.
      */
@@ -62,6 +55,42 @@ public:
     double purchasePriceProductById(int _id) const;
 
     /*!
+     * \brief Возвращает список идентификаторов всех покупателей.
+     * \return список идентификаторов всех покупателей.
+     */
+    QList<int> idCustomersList() const;
+    /*!
+     * \brief Возвращает идентификатор покупателя по индексу.
+     * \param index - индекс.
+     * \return идентификатор покупателя по индексу.
+     */
+    int idCustomerByIndex(int _index);
+    /*!
+     * \brief Возвращает имя покупателя по идентификатору.
+     * \param _id - идентификатор.
+     * \return имя покупателя.
+     */
+    QString nameCustomerById(int _id) const;
+    /*!
+     * \brief Возвращает ИНН покупателя по идентификатору.
+     * \param _id - идентификатор.
+     * \return ИНН покупателя.
+     */
+    QString innCustomerById(int _id) const;
+    /*!
+     * \brief Возвращает номер телефона покупателя по идентификатору.
+     * \param _id - идентификатор.
+     * \return номер телефона покупателя.
+     */
+    QString phoneCustomerById(int _id) const;
+    /*!
+     * \brief Возвращает адрес покупателя по идентификатору.
+     * \param _id - идентификатор.
+     * \return адрес покупателя.
+     */
+    QString addressCustomerById(int _id) const;
+
+    /*!
      * \brief Возвращает количество покупателей.
      * \return количество покупателей.
      */
@@ -76,7 +105,7 @@ private:
     /*!
      * \brief Устанавливает список покупателей.
      */
-    void setCustomersList();
+    void setCustomers();
     /*!
      * \brief Устанавливает продукцию.
      */
@@ -88,19 +117,22 @@ private:
     WarehouseSystemDataBaseManager *m_dataBaseManager;
 
     /*!
-     * \brief Список покупателей.
-     */
-    QList<WarehouseSystemCustomer*> m_customersList;
-
-    /*!
      * \brief Список идентификаторов всех продуктов.
      */
     QList<int> m_idProductsList;
+    /*!
+     * \brief Список идентификаторов всех покупателей.
+     */
+    QList<int> m_idCustomersList;
 
     /*!
      * \brief словарь продукции(идентификатор-продукт).
      */
     QMap<int, WarehouseSystemProduct*> m_productsMap;
+    /*!
+     * \brief словарь покупателей(идентификатор-покупатель).
+     */
+    QMap<int, WarehouseSystemCustomer*> m_customersMap;
 };
 
 #endif // WAREHOUSESYSTEMDATAMANAGER_H

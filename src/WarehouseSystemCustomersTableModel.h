@@ -5,7 +5,6 @@
 #include <QVariant>
 
 class WarehouseSystemDataManager;
-class WarehouseSystemCustomer;
 
 /*!
  * \brief Класс табличной модели покупателей.

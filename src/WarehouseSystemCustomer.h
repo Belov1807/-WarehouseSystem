@@ -20,23 +20,28 @@ public:
     WarehouseSystemCustomer(int _id, QString _name, QString _inn, QString _phone, QString _address);
 
     /*!
+     * \brief Возвращает идентификатор.
+     * \return идентификатор.
+     */
+    int id() const;
+    /*!
      * \brief Возвращает имя.
-     * \return
+     * \return имя покупателя.
      */
     QString name() const;
     /*!
      * \brief Возвращает ИНН.
-     * \return
+     * \return ИНН покупателя.
      */
     QString inn() const;
     /*!
      * \brief Возвращает номер телефона.
-     * \return
+     * \return номер телефона покупателя.
      */
     QString phone() const;
     /*!
      * \brief Возвращает адрес.
-     * \return
+     * \return адрес покупателя.
      */
     QString address() const;
 

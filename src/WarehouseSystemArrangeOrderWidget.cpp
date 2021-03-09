@@ -23,8 +23,9 @@ WarehouseSystemArrangeOrderWidget::~WarehouseSystemArrangeOrderWidget()
 void WarehouseSystemArrangeOrderWidget::prepareConnections()
 {
     connect(m_ui->cbProducts, SIGNAL(currentIndexChanged(int)), this, SLOT(changedProductSlot()));
-    connect(m_ui->sbProductsCount, SIGNAL(valueChanged(int)), this, SLOT(productsCountChangeSlot()));
     connect(m_ui->pbAddProduct, SIGNAL(clicked()), this, SLOT(addProductSlot()));
+    connect(m_ui->sbProductsCount, SIGNAL(valueChanged(int)), this, SLOT(productsCountChangeSlot()));
+    connect(m_ui->cbCustomers, SIGNAL(currentIndexChanged(int)), this, SLOT(changedCustomerSlot()));
 
     connect(m_ui->pbClose, SIGNAL(clicked()), this, SLOT(close()));
 }
@@ -45,12 +46,20 @@ void WarehouseSystemArrangeOrderWidget::prepareUi()
 
     m_ui->pbArrangeOrder->setEnabled(false);
 
-    m_ui->cbProducts->addItem(QString());
+    m_ui->cbProducts->addItem("<Выберите продукт из списка>");
 
     foreach (auto idProduct, m_dataManager->idProductList())
     {
         QVariant idProductVariant = QVariant::fromValue(idProduct);
         m_ui->cbProducts->addItem(m_dataManager->nameProductById(idProduct), idProductVariant);
+    }
+
+    m_ui->cbCustomers->addItem("<Выберите покупателя из списка>");
+
+    foreach (auto idCustomer, m_dataManager->idCustomersList())
+    {
+        QVariant idCustomerVariant = QVariant::fromValue(idCustomer);
+        m_ui->cbCustomers->addItem(m_dataManager->nameCustomerById(idCustomer), idCustomerVariant);
     }
 }
 
@@ -91,8 +100,16 @@ void WarehouseSystemArrangeOrderWidget::productsCountChangeSlot()
         m_order->setChangedProductCount(m_ui->sbProductsCount->text().toDouble());
         m_ui->lePositionCost->setEnabled(true);
         m_ui->lePositionCost->setText(QString::number(m_order->positionCost()));
+
+        if (m_ui->sbProductsCount->value() != 0)
+        {
+            m_ui->pbAddProduct->setEnabled(true);
+        }
+        else
+        {
+            m_ui->pbAddProduct->setEnabled(false);
+        }
     }
-    m_ui->pbAddProduct->setEnabled(true);
 }
 
 void WarehouseSystemArrangeOrderWidget::addProductSlot()
@@ -114,4 +131,9 @@ void WarehouseSystemArrangeOrderWidget::addProductSlot()
     m_ui->pbAddProduct->setEnabled(false);
 
     m_ui->pbArrangeOrder->setEnabled(true);
+}
+
+void WarehouseSystemArrangeOrderWidget::changedCustomerSlot()
+{
+
 }

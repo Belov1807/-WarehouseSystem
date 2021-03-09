@@ -9,6 +9,11 @@ WarehouseSystemCustomer::WarehouseSystemCustomer(int _id, QString _name, QString
 {
 }
 
+int WarehouseSystemCustomer::id() const
+{
+    return m_id;
+}
+
 QString WarehouseSystemCustomer::name() const
 {
     return m_name;

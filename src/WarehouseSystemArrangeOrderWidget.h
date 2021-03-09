@@ -42,6 +42,11 @@ private slots:
      */
     void addProductSlot();
 
+    /*!
+     * \brief Слот выбора покупателя.
+     */
+    void changedCustomerSlot();
+
 private:
     /*!
      * \brief Подготавливает соеденения.
