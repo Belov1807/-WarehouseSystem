@@ -9,7 +9,7 @@ class WarehouseSystemDataManager;
 /*!
  * \brief Класс табличной модели покупателей.
  */
-class WarehouseSystemCustomersTableModel   : public QAbstractTableModel
+class WarehouseSystemCustomersTableModel : public QAbstractTableModel
 {
 public:    
     /*!

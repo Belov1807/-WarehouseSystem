@@ -110,4 +110,3 @@ void WarehouseSystemMainWindow::arrangeOrderWidgetSlot()
         m_arrangeOrderWidget->show();
     }
 }
-

@@ -4,6 +4,7 @@
 #include <QWidget>
 
 class WarehouseSystemCustomersTableModel;
+class WarehouseSystemAddCustomerDialog;
 
 namespace Ui {
 class WarehouseSystemCustomersWidget;
@@ -27,6 +28,12 @@ public:
      */
     ~WarehouseSystemCustomersWidget();
 
+private slots:
+    /*!
+     * \brief Слот открытия диалога добавления нового покупателя.
+     */
+    void addCustomerDialogSlot();
+
 private:
     /*!
      * \brief Подготавливает соеденения.
@@ -41,6 +48,11 @@ private:
      * \brief Графический интерфейс.
      */
     Ui::WarehouseSystemCustomersWidget *m_ui;
+
+    /*!
+     * \brief Диалог добавления нового покупателя.
+     */
+    WarehouseSystemAddCustomerDialog *m_addCustomerDialog;
 };
 
 #endif // WAREHOUSESYSTEMCUSTOMERSWIDGET_H

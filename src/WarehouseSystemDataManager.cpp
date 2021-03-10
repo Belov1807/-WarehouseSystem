@@ -5,7 +5,7 @@
 #include "WarehouseSystemProduct.h"
 
 WarehouseSystemDataManager::WarehouseSystemDataManager() :
-    m_dataBaseManager(new WarehouseSystemDataBaseManager)
+    m_dataBaseManager(new WarehouseSystemDataBaseManager())
 {
     setCustomers();
     setProducts();

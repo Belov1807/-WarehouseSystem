@@ -31,11 +31,31 @@
        </widget>
       </item>
       <item row="1" column="0">
+       <widget class="QPushButton" name="pbAddCustomer">
+        <property name="text">
+         <string>Добавить нового покупателя</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
        <widget class="QPushButton" name="pbClose">
         <property name="text">
          <string>Закрыть</string>
         </property>
        </widget>
+      </item>
+      <item row="2" column="0">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
