@@ -2,10 +2,18 @@
 #define WAREHOUSESYSTEMDATABASE_H
 
 #include <QList>
-#include <QSqlDatabase>
 
 class WarehouseSystemCustomer;
 class WarehouseSystemProduct;
+
+/*!
+ * \brief Псевдоним для списка WarehouseSystemCustomer*.
+ */
+typedef QList<WarehouseSystemCustomer*> ListCustomer;
+/*!
+ * \brief Псевдоним для списка WarehouseSystemProduct*.
+ */
+typedef QList<WarehouseSystemProduct*> ListProduct;
 
 /*!
  * \brief Класс менеджера базы данных.
@@ -22,13 +30,18 @@ public:
      * \brief Возвращает список покупателей.
      * \return список покупателей.
      */
-    QList<WarehouseSystemCustomer*> customersList();
+    ListCustomer customersList();
     /*!
      * \brief Возвращает список продукции.
      * \return список продукции.
      */
-    QList<WarehouseSystemProduct*> productList();
+    ListProduct productList();
 
+    /*!
+     * \brief Добавляет покупателя в БД.
+     * \param _customer - покупатель.
+     */
+    void insertCustomer(WarehouseSystemCustomer *_customer);
 
 private:
     /*!
@@ -49,11 +62,11 @@ private:
     /*!
      * \brief Список покупателей.
      */
-    QList<WarehouseSystemCustomer*> m_customersList;
+    ListCustomer m_customersList;
     /*!
      * \brief Список продукции.
      */
-    QList<WarehouseSystemProduct*> m_productsList;
+    ListProduct m_productsList;
 };
 
 #endif // WAREHOUSESYSTEMDATABASE_H

@@ -3,8 +3,13 @@
 #include "WarehouseSystemDataManager.h"
 
 WarehouseSystemProductTableModel::WarehouseSystemProductTableModel() :
-    m_dataManager(new WarehouseSystemDataManager)
+    m_dataManager(new WarehouseSystemDataManager())
 {
+}
+
+WarehouseSystemProductTableModel::~WarehouseSystemProductTableModel()
+{
+    delete m_dataManager;
 }
 
 int WarehouseSystemProductTableModel::rowCount(const QModelIndex &_parent) const

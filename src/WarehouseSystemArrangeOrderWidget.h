@@ -5,6 +5,7 @@
 
 class WarehouseSystemOrder;
 class WarehouseSystemDataManager;
+class WarehouseSystemAddCustomerDialog;
 
 namespace Ui {
 class WarehouseSystemArrangeOrderWidget;
@@ -46,6 +47,14 @@ private slots:
      * \brief Слот выбора покупателя.
      */
     void changedCustomerSlot();
+    /*!
+     * \brief Слот открытия диалога добавления нового покупателя.
+     */
+    void addCustomerDialogSlot();
+    /*!
+     * \brief Слот обновления комбо бокса выбора покупателя.
+     */
+    void updateCbCustomerSlot();
 
 private:
     /*!
@@ -56,6 +65,8 @@ private:
      * \brief Подготавливает отображение.
      */
     void prepareUi();
+
+    void setItemCbCustomers();
 
     /*!
      * \brief Графический интерфейс.
@@ -71,6 +82,11 @@ private:
      * \brief Заказ.
      */
     WarehouseSystemOrder *m_order;
+
+    /*!
+     * \brief Диалог добавления нового покупателя.
+     */
+    WarehouseSystemAddCustomerDialog *m_addCustomerDialog;
 };
 
 #endif // WAREHOUSESYSTEMARRANGEORDER_H

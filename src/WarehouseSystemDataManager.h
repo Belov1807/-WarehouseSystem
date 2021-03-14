@@ -8,6 +8,19 @@ class WarehouseSystemCustomer;
 class WarehouseSystemProduct;
 
 /*!
+ * \brief Псевдоним для списка integer.
+ */
+typedef QList<int> IntList;
+/*!
+ * \brief Псевдоним для QMap int - WarehouseSystemProduct*.
+ */
+typedef QMap<int, WarehouseSystemProduct*> MapIdProduct;
+/*!
+ * \brief Псевдоним для QMap int - WarehouseSystemCustomer*.
+ */
+typedef QMap<int, WarehouseSystemCustomer*> MapIdCustomer;
+
+/*!
  * \brief Класс менеджера данных.
  */
 class WarehouseSystemDataManager
@@ -17,18 +30,22 @@ public:
      * \brief Конструктор.
      */
     WarehouseSystemDataManager();
+    /*!
+     * \brief Деструктор..
+     */
+    ~WarehouseSystemDataManager();
 
     /*!
      * \brief Возвращает список идентификаторов всей продукции.
      * \return список идентификаторов всей продукции.
      */
-    QList<int> idProductList() const;
+    IntList idProductList() const;
     /*!
      * \brief Возвращает идентификатор продукции по индексу.
      * \param index - индекс.
      * \return идентификатор продукции по индексу.
      */
-    int idProductByIndex(int _index);
+    int idProductByIndex(int _index) const;
     /*!
      * \brief Возвращает имя продукции по идентификатору.
      * \param _id - идентификатор.
@@ -58,13 +75,13 @@ public:
      * \brief Возвращает список идентификаторов всех покупателей.
      * \return список идентификаторов всех покупателей.
      */
-    QList<int> idCustomersList() const;
+    IntList idCustomersList()const;
     /*!
      * \brief Возвращает идентификатор покупателя по индексу.
      * \param index - индекс.
      * \return идентификатор покупателя по индексу.
      */
-    int idCustomerByIndex(int _index);
+    int idCustomerByIndex(int _index) const;
     /*!
      * \brief Возвращает имя покупателя по идентификатору.
      * \param _id - идентификатор.
@@ -94,14 +111,24 @@ public:
      * \brief Возвращает количество покупателей.
      * \return количество покупателей.
      */
-    int customersCount();
+    int customersCount() const;
     /*!
      * \brief Возвращает количество продукции.
      * \return количество продукции.
      */
-    int productsCount();
+    int productsCount() const;
+
+    /*!
+     * \brief Добавляет покупателя.
+     * \param _name - имя.
+     * \param _inn - ИНН.
+     * \param _phone - номер телефона.
+     * \param _address - адрес.
+     */
+    void addCustomer(QString _name, QString _inn, QString _phone, QString _address);
 
 private:
+
     /*!
      * \brief Устанавливает список покупателей.
      */
@@ -119,20 +146,20 @@ private:
     /*!
      * \brief Список идентификаторов всех продуктов.
      */
-    QList<int> m_idProductsList;
+    IntList m_idProductsList;
     /*!
      * \brief Список идентификаторов всех покупателей.
      */
-    QList<int> m_idCustomersList;
+    IntList m_idCustomersList;
 
     /*!
      * \brief словарь продукции(идентификатор-продукт).
      */
-    QMap<int, WarehouseSystemProduct*> m_productsMap;
+    MapIdProduct m_productsMap;
     /*!
      * \brief словарь покупателей(идентификатор-покупатель).
      */
-    QMap<int, WarehouseSystemCustomer*> m_customersMap;
+    MapIdCustomer m_customersMap;
 };
 
 #endif // WAREHOUSESYSTEMDATAMANAGER_H

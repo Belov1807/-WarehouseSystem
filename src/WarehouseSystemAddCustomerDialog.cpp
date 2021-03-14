@@ -1,9 +1,12 @@
 #include "WarehouseSystemAddCustomerDialog.h"
 #include "ui_WarehouseSystemAddCustomerDialog.h"
 
+#include "WarehouseSystemDataManager.h"
+
 WarehouseSystemAddCustomerDialog::WarehouseSystemAddCustomerDialog(QWidget *_parent) :
     QDialog(_parent),
-    m_ui(new Ui::WarehouseSystemAddCustomerDialog)
+    m_ui(new Ui::WarehouseSystemAddCustomerDialog),
+    m_dataManager(new WarehouseSystemDataManager())
 {
     m_ui->setupUi(this);
 
@@ -14,23 +17,38 @@ WarehouseSystemAddCustomerDialog::WarehouseSystemAddCustomerDialog(QWidget *_par
 WarehouseSystemAddCustomerDialog::~WarehouseSystemAddCustomerDialog()
 {
     delete m_ui;
+    delete m_dataManager;
 }
 
 void WarehouseSystemAddCustomerDialog::prepareConnections()
 {
     connect(m_ui->lePhone, SIGNAL(textEdited(const QString &)), this, SLOT(changeInputMaskSlot()));
 
-    connect(m_ui->leName, SIGNAL(editingFinished()), this, SLOT(checkInputSlot()));
+    connect(m_ui->leName, SIGNAL(cursorPositionChanged(int, int)), this, SLOT(checkInputSlot()));
     connect(m_ui->leINN, SIGNAL(cursorPositionChanged(int, int)), this, SLOT(checkInputSlot()));
     connect(m_ui->lePhone, SIGNAL(cursorPositionChanged(int, int)), this, SLOT(checkInputSlot()));
-    connect(m_ui->leAddress, SIGNAL(editingFinished()), this, SLOT(checkInputSlot()));
+    connect(m_ui->leAddress, SIGNAL(cursorPositionChanged(int, int)), this, SLOT(checkInputSlot()));
+    connect(m_ui->pbSave, SIGNAL(clicked()), this, SLOT(addNewCustomerSlot()));
+
+    connect(m_ui->pbClose, SIGNAL(clicked()), this, SLOT(close()));
 }
 
 void WarehouseSystemAddCustomerDialog::prepareUi()
 {
-    m_ui->leINN->setInputMask("DDDDDDDDDD;_");
+    m_ui->lCheckName->setText(QString());
+    m_ui->lCheckINN->setText(QString());
+    m_ui->lCheckPhone->setText(QString());
+    m_ui->lCheckAddress->setText(QString());
 
-    m_ui->lePhone->setInputMask("+7(DDDdd)DDDDD;_");
+    m_ui->leINN->setInputMask("9999999999;_");
+    setStartedIputMaskPhone();
+
+    m_ui->pbSave->setEnabled(false);
+}
+
+void WarehouseSystemAddCustomerDialog::setStartedIputMaskPhone()
+{
+    m_ui->lePhone->setInputMask("+7(99900)99999;_");
 }
 
 void WarehouseSystemAddCustomerDialog::changeInputMaskSlot()
@@ -38,7 +56,7 @@ void WarehouseSystemAddCustomerDialog::changeInputMaskSlot()
     int phoneTextSize = m_ui->lePhone->text().count();
     if (phoneTextSize < 5)
     {
-        m_ui->lePhone->setInputMask("+7(DDDdd)DDDDD;_");
+        setStartedIputMaskPhone();
     }
     else if ((phoneTextSize == 8 ||
               phoneTextSize == 9))
@@ -65,7 +83,7 @@ void WarehouseSystemAddCustomerDialog::changeInputMaskSlot()
 
                     for (int j = 0; j < rearrangedSymbolsCount; j++)
                     {
-                        inputMask.insert(cursorPosition, "D");
+                        inputMask.insert(cursorPosition, "9");
                     }
                     m_ui->lePhone->setInputMask(inputMask);
 
@@ -94,6 +112,30 @@ void WarehouseSystemAddCustomerDialog::checkInputSlot()
     }
     else
     {
-        checkLabel->setText("QString()");
+        checkLabel->setText(QString());
     }
+
+    if (!m_ui->leName->text().isEmpty() &&
+            !m_ui->leAddress->text().isEmpty() &&
+            m_ui->leINN->text().count() == m_ui->leINN->displayText().count() &&
+            m_ui->lePhone->text().count() == m_ui->lePhone->displayText().count())
+    {
+        m_ui->pbSave->setEnabled(true);
+    }
+    else
+    {
+        m_ui->pbSave->setEnabled(false);
+    }
+
+
+}
+
+void WarehouseSystemAddCustomerDialog::addNewCustomerSlot()
+{
+    m_dataManager->addCustomer(m_ui->leName->text(),
+                               m_ui->leINN->text(),
+                               m_ui->lePhone->text(),
+                               m_ui->leAddress->text());
+
+    emit addCustomerToDBSignal();
 }

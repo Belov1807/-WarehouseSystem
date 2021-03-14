@@ -16,6 +16,10 @@ public:
      * \brief Конструктор.
      */
     WarehouseSystemCustomersTableModel();
+    /*!
+     * \brief Деструктор.
+     */
+    ~WarehouseSystemCustomersTableModel();
 
     /*!
      * \brief Возвращает количество строк.

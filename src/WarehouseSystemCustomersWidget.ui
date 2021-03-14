@@ -31,7 +31,7 @@
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QPushButton" name="pbAddCustomer">
+       <widget class="QPushButton" name="pbAddNewCustomer">
         <property name="text">
          <string>Добавить нового покупателя</string>
         </property>

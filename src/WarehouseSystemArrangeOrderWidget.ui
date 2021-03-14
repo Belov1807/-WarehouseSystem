@@ -133,6 +133,13 @@
          <widget class="QComboBox" name="cbCustomers"/>
         </item>
         <item>
+         <widget class="QPushButton" name="pbAddNewCustomer">
+          <property name="text">
+           <string>Добавить нового покупателя</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="Line" name="line_3">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -158,7 +165,17 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="cbProducts"/>
+         <widget class="QComboBox" name="cbProducts">
+          <property name="contextMenuPolicy">
+           <enum>Qt::DefaultContextMenu</enum>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContents</enum>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="pbAddProduct">

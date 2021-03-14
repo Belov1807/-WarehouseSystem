@@ -4,6 +4,7 @@
 #include <QWidget>
 
 class WarehouseSystemProductTableModel;
+class WarehouseSystemProduct;
 
 namespace Ui {
 class WarehouseSystemProductWidget;
@@ -12,8 +13,6 @@ class WarehouseSystemProductWidget;
 /*!
  * \brief Класс виджета продукции.
  */
-class WarehouseSystemProduct;
-
 class WarehouseSystemProductWidget : public QWidget
 {
     Q_OBJECT

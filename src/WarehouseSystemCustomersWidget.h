@@ -33,6 +33,10 @@ private slots:
      * \brief Слот открытия диалога добавления нового покупателя.
      */
     void addCustomerDialogSlot();
+    /*!
+     * \brief Слот обновления табличной модели.
+     */
+    void updateTableSlot();
 
 private:
     /*!
@@ -45,6 +49,11 @@ private:
     void prepareUi();
 
     /*!
+     * \brief Устанавливает табличную модель.
+     */
+    void setTable();
+
+    /*!
      * \brief Графический интерфейс.
      */
     Ui::WarehouseSystemCustomersWidget *m_ui;
@@ -53,6 +62,10 @@ private:
      * \brief Диалог добавления нового покупателя.
      */
     WarehouseSystemAddCustomerDialog *m_addCustomerDialog;
+    /*!
+     * \brief Табличная модель
+     */
+    WarehouseSystemCustomersTableModel *m_model;
 };
 
 #endif // WAREHOUSESYSTEMCUSTOMERSWIDGET_H

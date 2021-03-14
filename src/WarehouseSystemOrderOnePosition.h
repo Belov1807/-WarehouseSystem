@@ -17,6 +17,10 @@ public:
      * \param _id - идентификатор продукции.
      */
     WarehouseSystemOrderOnePosition(int _id);
+    /*!
+     * \brief Деструктор.
+     */
+    ~WarehouseSystemOrderOnePosition();
 
     /*!
      * \brief Устанавливает количество продукции.
@@ -42,6 +46,9 @@ public:
     QString info() const;
 
 private:
+    /*!
+     * \brief Идентификатор продукта.
+     */
     int m_idProduct;
 
     /*!

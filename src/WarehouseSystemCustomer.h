@@ -17,13 +17,8 @@ public:
      * \param _phone - номер телефона.
      * \param _address - адрес.
      */
-    WarehouseSystemCustomer(int _id, QString _name, QString _inn, QString _phone, QString _address);
+    WarehouseSystemCustomer(QString _name, QString _inn, QString _phone, QString _address, int _id =0);
 
-    /*!
-     * \brief Возвращает идентификатор.
-     * \return идентификатор.
-     */
-    int id() const;
     /*!
      * \brief Возвращает имя.
      * \return имя покупателя.
@@ -44,12 +39,13 @@ public:
      * \return адрес покупателя.
      */
     QString address() const;
-
-private:
     /*!
-     * \brief m_id - идентификатор.
+     * \brief Возвращает идентификатор.
+     * \return идентификатор.
      */
-    int m_id;
+    int id() const;
+
+private:  
     /*!
      * \brief m_name - имя.
      */
@@ -66,6 +62,10 @@ private:
      * \brief m_address - адрес.
      */
     QString m_address;
+    /*!
+     * \brief m_id - идентификатор.
+     */
+    int m_id;
 };
 
 #endif // WAREHOUSESYSTEMCUSTOMERS_H

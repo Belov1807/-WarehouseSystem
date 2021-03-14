@@ -7,7 +7,8 @@
 WarehouseSystemOrder::WarehouseSystemOrder(int _id, WarehouseSystemCustomer *_customer) :
     m_id(_id),
     m_customer(_customer),
-    m_orderPosition(nullptr)
+    m_orderPosition(nullptr),
+    m_positionsList(QList<WarehouseSystemOrderOnePosition*>())
 {
 }
 

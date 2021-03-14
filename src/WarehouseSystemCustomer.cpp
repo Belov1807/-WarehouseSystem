@@ -1,11 +1,11 @@
 #include "WarehouseSystemCustomer.h"
 
-WarehouseSystemCustomer::WarehouseSystemCustomer(int _id, QString _name, QString _inn, QString _phone, QString _address) :
-    m_id(_id),
+WarehouseSystemCustomer::WarehouseSystemCustomer(QString _name , QString _inn, QString _phone, QString _address, int _id) :
     m_name(_name),
     m_inn(_inn),
     m_phone(_phone),
-    m_address(_address)
+    m_address(_address),
+    m_id(_id)
 {
 }
 

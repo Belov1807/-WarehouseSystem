@@ -3,12 +3,14 @@
 
 #include "WarehouseSystemOrder.h"
 #include "WarehouseSystemDataManager.h"
+#include "WarehouseSystemAddCustomerDialog.h"
 
 WarehouseSystemArrangeOrderWidget::WarehouseSystemArrangeOrderWidget(QWidget *_parent) :
     QWidget(_parent),
     m_ui(new Ui::WarehouseSystemArrangeOrderWidget),
     m_dataManager(new WarehouseSystemDataManager),
-    m_order(new WarehouseSystemOrder())
+    m_order(new WarehouseSystemOrder()),
+    m_addCustomerDialog(nullptr)
 {
     m_ui->setupUi(this);
 
@@ -19,6 +21,8 @@ WarehouseSystemArrangeOrderWidget::WarehouseSystemArrangeOrderWidget(QWidget *_p
 WarehouseSystemArrangeOrderWidget::~WarehouseSystemArrangeOrderWidget()
 {
     delete m_ui;
+    delete m_dataManager;
+    delete m_order;
 }
 void WarehouseSystemArrangeOrderWidget::prepareConnections()
 {
@@ -26,6 +30,7 @@ void WarehouseSystemArrangeOrderWidget::prepareConnections()
     connect(m_ui->pbAddProduct, SIGNAL(clicked()), this, SLOT(addProductSlot()));
     connect(m_ui->sbProductsCount, SIGNAL(valueChanged(int)), this, SLOT(productsCountChangeSlot()));
     connect(m_ui->cbCustomers, SIGNAL(currentIndexChanged(int)), this, SLOT(changedCustomerSlot()));
+    connect(m_ui->pbAddNewCustomer, SIGNAL(clicked()), this, SLOT(addCustomerDialogSlot()));
 
     connect(m_ui->pbClose, SIGNAL(clicked()), this, SLOT(close()));
 }
@@ -47,6 +52,7 @@ void WarehouseSystemArrangeOrderWidget::prepareUi()
     m_ui->pbArrangeOrder->setEnabled(false);
 
     m_ui->cbProducts->addItem("<Выберите продукт из списка>");
+    m_ui->cbCustomers->insertSeparator(m_ui->cbCustomers->count());
 
     foreach (auto idProduct, m_dataManager->idProductList())
     {
@@ -54,13 +60,7 @@ void WarehouseSystemArrangeOrderWidget::prepareUi()
         m_ui->cbProducts->addItem(m_dataManager->nameProductById(idProduct), idProductVariant);
     }
 
-    m_ui->cbCustomers->addItem("<Выберите покупателя из списка>");
-
-    foreach (auto idCustomer, m_dataManager->idCustomersList())
-    {
-        QVariant idCustomerVariant = QVariant::fromValue(idCustomer);
-        m_ui->cbCustomers->addItem(m_dataManager->nameCustomerById(idCustomer), idCustomerVariant);
-    }
+    setItemCbCustomers();
 }
 
 void WarehouseSystemArrangeOrderWidget::changedProductSlot()
@@ -136,4 +136,49 @@ void WarehouseSystemArrangeOrderWidget::addProductSlot()
 void WarehouseSystemArrangeOrderWidget::changedCustomerSlot()
 {
 
+}
+
+void WarehouseSystemArrangeOrderWidget::addCustomerDialogSlot()
+{
+    if (m_addCustomerDialog == nullptr)
+    {
+        m_addCustomerDialog = new WarehouseSystemAddCustomerDialog();
+
+        m_addCustomerDialog->show();
+        connect(m_addCustomerDialog, SIGNAL(addCustomerToDBSignal()), this, SLOT(updateCbCustomerSlot()));
+    }
+    else if (m_addCustomerDialog != nullptr &&
+             m_addCustomerDialog->isVisible() == false)
+    {
+        m_addCustomerDialog->close();
+        delete m_addCustomerDialog;
+
+        m_addCustomerDialog = new WarehouseSystemAddCustomerDialog();
+        m_addCustomerDialog->show();
+    }
+}
+
+void WarehouseSystemArrangeOrderWidget::updateCbCustomerSlot()
+{
+    delete m_dataManager;
+    m_dataManager = new WarehouseSystemDataManager();
+    m_ui->cbCustomers->clear();
+
+    setItemCbCustomers();
+
+    m_ui->cbCustomers->setCurrentIndex(m_ui->cbCustomers->count() -1);
+
+    m_dataManager->customersCount();
+}
+
+void WarehouseSystemArrangeOrderWidget::setItemCbCustomers()
+{
+    m_ui->cbCustomers->addItem("<Выберите покупателя из списка>");
+    m_ui->cbCustomers->insertSeparator(m_ui->cbCustomers->count());
+
+    foreach (auto idCustomer, m_dataManager->idCustomersList())
+    {
+        QVariant idCustomerVariant = QVariant::fromValue(idCustomer);
+        m_ui->cbCustomers->addItem(m_dataManager->nameCustomerById(idCustomer), idCustomerVariant);
+    }
 }

@@ -7,8 +7,13 @@ WarehouseSystemOrderOnePosition::WarehouseSystemOrderOnePosition(int _id) :
     m_idProduct(_id),
     m_productCount(0),
     m_theCost(0),
-    m_dataManager(new WarehouseSystemDataManager)
+    m_dataManager(new WarehouseSystemDataManager())
 {
+}
+
+WarehouseSystemOrderOnePosition::~WarehouseSystemOrderOnePosition()
+{
+    delete m_dataManager;
 }
 
 void WarehouseSystemOrderOnePosition::setProductCount(double _productCount)
