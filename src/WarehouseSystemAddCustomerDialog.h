@@ -2,6 +2,7 @@
 #define WAREHOUSESYSTEMADDCUSTOMERDIALOG_H
 
 #include <QDialog>
+
 class WarehouseSystemDataManager;
 
 namespace Ui {

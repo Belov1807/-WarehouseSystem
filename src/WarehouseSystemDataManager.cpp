@@ -58,24 +58,49 @@ int WarehouseSystemDataManager::idProductByIndex(int _index) const
     return  m_idProductsList.at(_index);
 }
 
+WarehouseSystemProduct* WarehouseSystemDataManager::productById(int _id) const
+{
+    return m_productsMap.value(_id);
+}
+
 QString WarehouseSystemDataManager::nameProductById(int _id) const
 {
-    return m_productsMap.value(_id)->name();
+    return productById(_id)->name();
 }
 
 double WarehouseSystemDataManager::countProductById(int _id) const
 {
-    return m_productsMap.value(_id)->count();
+    return productById(_id)->count();
+}
+
+QList<QString> WarehouseSystemDataManager::unitsOfMeasureProductList() const
+{
+    QList<QString> unitsOfMeasureProductList = QStringList();
+
+    unitsOfMeasureProductList.append("кг.");
+    unitsOfMeasureProductList.append("шт.");
+
+    return unitsOfMeasureProductList;
 }
 
 QString WarehouseSystemDataManager::unitOfMeasureProductById(int _id) const
 {
-    return m_productsMap.value(_id)->unitOfMeasure();
+    return unitsOfMeasureProductList().at(productById(_id)->unitOfMeasure());
+}
+
+int WarehouseSystemDataManager::countUnitOfMeasureProduct() const
+{
+    return unitsOfMeasureProductList().count();
+}
+
+QString WarehouseSystemDataManager::productUnitOfMeasureAt(int _index) const
+{
+    unitsOfMeasureProductList().at(_index);
 }
 
 double WarehouseSystemDataManager::purchasePriceProductById(int _id) const
 {
-    return m_productsMap.value(_id)->purchasePrice();
+    return productById(_id)->purchasePrice();
 }
 
 IntList WarehouseSystemDataManager::idCustomersList() const
@@ -88,24 +113,29 @@ int WarehouseSystemDataManager::idCustomerByIndex(int _index) const
     return m_idCustomersList.at(_index);
 }
 
+WarehouseSystemCustomer* WarehouseSystemDataManager::customerById(int _id) const
+{
+    return m_customersMap.value(_id);
+}
+
 QString WarehouseSystemDataManager::nameCustomerById(int _id) const
 {
-    return m_customersMap.value(_id)->name();
+    return customerById(_id)->name();
 }
 
 QString WarehouseSystemDataManager::innCustomerById(int _id) const
 {
-    return m_customersMap.value(_id)->inn();
+    return customerById(_id)->inn();
 }
 
 QString WarehouseSystemDataManager::phoneCustomerById(int _id) const
 {
-    return m_customersMap.value(_id)->phone();
+    return customerById(_id)->phone();
 }
 
 QString WarehouseSystemDataManager::addressCustomerById(int _id) const
 {
-    return m_customersMap.value(_id)->address();
+    return customerById(_id)->address();
 }
 
 void WarehouseSystemDataManager::addCustomer(QString _name, QString _inn, 
@@ -115,4 +145,10 @@ void WarehouseSystemDataManager::addCustomer(QString _name, QString _inn,
                                                                     _phone, _address);
 
     m_dataBaseManager->insertCustomer(customer);
+}
+
+void WarehouseSystemDataManager::addProduct(QString _name, double _count, bool _unitOfMeasure, double _purchasePrice)
+{
+    WarehouseSystemProduct *product = new WarehouseSystemProduct(_name, _count, _unitOfMeasure, _purchasePrice);
+    m_dataBaseManager->insertProduct(product);
 }

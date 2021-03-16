@@ -1,11 +1,11 @@
 #include "WarehouseSystemProduct.h"
 
-WarehouseSystemProduct::WarehouseSystemProduct(int _id, QString _name, double _count, bool _unitOfMeasure, double _purchasePrice) :
-    m_id(_id),
+WarehouseSystemProduct::WarehouseSystemProduct(QString _name, double _count, bool _unitOfMeasure, double _purchasePrice, int _id) :
     m_name(_name),
     m_count(_count),
     m_unitOfMeasure(_unitOfMeasure),
-    m_purchasePrice(_purchasePrice)
+    m_purchasePrice(_purchasePrice),
+    m_id(_id)
 {
 }
 
@@ -24,18 +24,10 @@ double WarehouseSystemProduct::count() const
     return m_count;
 }
 
-QString WarehouseSystemProduct::unitOfMeasure() const
+bool WarehouseSystemProduct::unitOfMeasure() const
 {
-    if (m_unitOfMeasure)
-    {
-        return "шт.";
-    }
-    else
-    {
-        return "кг.";
-    }
+    return m_unitOfMeasure;
 }
-
 double WarehouseSystemProduct::purchasePrice() const
 {
     return m_purchasePrice;

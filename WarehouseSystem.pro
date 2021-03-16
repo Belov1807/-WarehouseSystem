@@ -1,6 +1,6 @@
 QT       += core gui sql
 
-VERSION = 0.9.0
+VERSION = 0.10.0
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     src/WarehouseSystemAddCustomerDialog.cpp \
+    src/WarehouseSystemAddProductDialog.cpp \
     src/WarehouseSystemArrangeOrderWidget.cpp \
 src/WarehouseSystemCustomer.cpp \
 src/WarehouseSystemCustomersTableModel.cpp \
@@ -34,6 +35,7 @@ src/WarehouseSystemMainWindow.cpp
 
 HEADERS += \
     src/WarehouseSystemAddCustomerDialog.h \
+    src/WarehouseSystemAddProductDialog.h \
     src/WarehouseSystemArrangeOrderWidget.h \
 src/WarehouseSystemCustomer.h \
 src/WarehouseSystemCustomersTableModel.h \
@@ -50,6 +52,7 @@ src/WarehouseSystemProductWidget.h
 
 FORMS += \
     src/WarehouseSystemAddCustomerDialog.ui \
+    src/WarehouseSystemAddProductDialog.ui \
     src/WarehouseSystemArrangeOrderWidget.ui \
 src/WarehouseSystemCustomersWidget.ui \
 src/WarehouseSystemInfoOfCompanyWidget.ui \

@@ -55,11 +55,11 @@ void WarehouseSystemDataBaseManager::setProductsList()
 
     while (query.next())
     {
-        WarehouseSystemProduct *product = new WarehouseSystemProduct(query.value("id").toInt(),
-                                                                     query.value("name").toString(),
+        WarehouseSystemProduct *product = new WarehouseSystemProduct(query.value("name").toString(),
                                                                      query.value("count").toDouble(),
                                                                      query.value("unit_of_measure").toBool(),
-                                                                     query.value("purchase_price").toDouble());
+                                                                     query.value("purchase_price").toDouble(),
+                                                                     query.value("id").toInt());
 
         m_productsList.append(product);
     }
@@ -85,5 +85,18 @@ void WarehouseSystemDataBaseManager::insertCustomer(WarehouseSystemCustomer *_cu
     query.bindValue(":INN", _customer->inn());
     query.bindValue(":phone", _customer->phone());
     query.bindValue(":address", _customer->address());
+    query.exec();
+}
+
+void WarehouseSystemDataBaseManager::insertProduct(WarehouseSystemProduct *_product)
+{
+    QSqlQuery query;
+
+    query.prepare("INSERT INTO product (id, name, count, unit_of_measure, purchase_price)"
+                           "VALUES (:id, :name, :count, :unit_of_measure, :purchase_price)");
+    query.bindValue(":name", _product->name());
+    query.bindValue(":count", _product->count());
+    query.bindValue(":unit_of_measure", _product->unitOfMeasure());
+    query.bindValue(":purchase_price", _product->purchasePrice());
     query.exec();
 }

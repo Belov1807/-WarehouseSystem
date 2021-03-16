@@ -53,17 +53,33 @@ public:
      */
     QString nameProductById(int _id) const;
     /*!
-     * \brief Возвращает количество подукции о идентификатору.
+     * \brief Возвращает количество продукции о идентификатору.
      * \param _id - идентификатор.
      * \return количество подукции о идентификатору.
      */
     double countProductById(int _id) const;
     /*!
-     * \brief Возвращает ед. измерения. подукции о идентификатору.
-     * \param _id - идентификатор.
+     * \brief Возвращает список всех едениц измерения продукции.
+     * \return список всех едених измерения продукции.
+     */
+    QList<QString> unitsOfMeasureProductList() const;
+    /*!
+     * \brief Возвращает ед. измерения. продукции о идентификатору продукции.
+     * \param _id - идентификатор продукции.
      * \return ед. измерения. подукции о идентификатору.
      */
     QString unitOfMeasureProductById(int _id) const;
+    /*!
+     * \brief Возвращает количество ед. измерения продукции.
+     * \return
+     */
+    int countUnitOfMeasureProduct() const;
+    /*!
+     * \brief Возвращает название ед. измерения продукции по индексу ед. измерения.
+     * \param _index -индекс ед. измерения.
+     * \return название ед. измерения продукции.
+     */
+    QString productUnitOfMeasureAt(int _index) const;
     /*!
      * \brief Возвращает цену закупки подукции о идентификатору.
      * \param _id - идентификатор.
@@ -126,6 +142,14 @@ public:
      * \param _address - адрес.
      */
     void addCustomer(QString _name, QString _inn, QString _phone, QString _address);
+    /*!
+     * \brief Добавляет продукцию.
+     * \param _name - название.
+     * \param _count - количество.
+     * \param _unitOfMeasure - ед. измерения.
+     * \param _purchasePrice - цена закупки.
+     */
+    void addProduct(QString _name, double _count, bool _unitOfMeasure, double _purchasePrice);
 
 private:
 
@@ -137,6 +161,19 @@ private:
      * \brief Устанавливает продукцию.
      */
     void setProducts();
+
+    /*!
+     * \brief Возвращает покупателя по идентфикатору.
+     * \param _id - идентификатор покупателя.
+     * \return покупатель.
+     */
+    WarehouseSystemCustomer* customerById(int _id) const;
+    /*!
+     * \brief Возвращает продукт по идентификатору.
+     * \param _id - идентификатор продукта.
+     * \return продукт.
+     */
+    WarehouseSystemProduct* productById(int _id) const;
 
     /*!
      * \brief Менеджер БД.

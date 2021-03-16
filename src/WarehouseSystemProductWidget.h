@@ -4,7 +4,7 @@
 #include <QWidget>
 
 class WarehouseSystemProductTableModel;
-class WarehouseSystemProduct;
+class WarehouseSystemAddProductDialog;
 
 namespace Ui {
 class WarehouseSystemProductWidget;
@@ -28,6 +28,16 @@ public:
      */
     ~WarehouseSystemProductWidget();
 
+private slots:
+    /*!
+     * \brief Слот открытия диалога добавления новой продукции.
+     */
+    void addProductDialogSlot();
+    /*!
+     * \brief Слот обновления табличной модели.
+     */
+    void updateTableSlot();
+
 private:
     /*!
      * \brief Подготавливает соеденения.
@@ -39,9 +49,24 @@ private:
     void prepareUi();
 
     /*!
+     * \brief Устанавливает табличную модель.
+     */
+    void setTable();
+
+    /*!
     * \brief Графический интерфейс.
     */
     Ui::WarehouseSystemProductWidget *m_ui;
+
+    /*!
+     * \brief Табличная модель.
+     */
+    WarehouseSystemProductTableModel *m_model;
+
+    /*!
+     * \brief Диалог добавления новой продукции.
+     */
+    WarehouseSystemAddProductDialog *m_addProductDialog;
 };
 
 #endif // WAREHOUSESYSTEMPRODUCTWIDGET_H

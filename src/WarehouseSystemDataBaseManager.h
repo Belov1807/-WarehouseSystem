@@ -42,6 +42,11 @@ public:
      * \param _customer - покупатель.
      */
     void insertCustomer(WarehouseSystemCustomer *_customer);
+    /*!
+     * \brief Добавляет продукцию в БД.
+     * \param _customer - продукция.
+     */
+    void insertProduct(WarehouseSystemProduct *_product);
 
 private:
     /*!

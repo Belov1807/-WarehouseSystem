@@ -11,13 +11,13 @@ class WarehouseSystemProduct
 public:
     /*!
      * \brief Конструктор.
-     * \param _id - Идентификатор.
-     * \param _name - Название.
-     * \param _count - Количество.
-     * \param _unitOfMeasure - Ед. измерения.
-     * \param _purchasePrice - Цена закупки.
+     * \param _id - идентификатор.
+     * \param _name - название.
+     * \param _count - количество.
+     * \param _unitOfMeasure - ед. измерения.
+     * \param _purchasePrice - цена закупки.
      */
-    WarehouseSystemProduct(int _id, QString _name, double _count, bool _unitOfMeasure, double _purchasePrice);
+    WarehouseSystemProduct(QString _name, double _count, bool _unitOfMeasure, double _purchasePrice, int _id = 0);
 
     /*!
      * \brief Возвращает идентификатор.
@@ -38,7 +38,8 @@ public:
      * \brief Возвращает ед. измерения.
      * \return ед. измерения продукции.
      */
-    QString unitOfMeasure() const;
+    bool unitOfMeasure() const;
+
     /*!
      * \brief Возвращает цену закупки.
      * \return цена закупки продукции.
@@ -47,11 +48,7 @@ public:
 
 private:
     /*!
-     * \brief Идентификатор.
-     */
-    int m_id;
-    /*!
-     * \brief Название..
+     * \brief Название.
      */
     QString m_name;
     /*!
@@ -66,6 +63,11 @@ private:
      * \brief Цена закупки.
      */
     double m_purchasePrice;
+    /*!
+     * \brief Идентификатор.
+     */
+    int m_id;
+
 };
 
 #endif // WAREHOUSESYSTEMPRODUCT_H
