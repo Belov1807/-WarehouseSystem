@@ -51,6 +51,12 @@ public:
      */
     QVariant headerData(int _section, Qt::Orientation _orientation, int _role = Qt::DisplayRole) const;
 
+    /*!
+     * \brief Удаляет покупателя индексу.
+     * \param _index - индекс покупателя.
+     */
+    void removeCustomer(const QModelIndex &_index);
+
 private:
     /*!
      * \brief Колонки модели.

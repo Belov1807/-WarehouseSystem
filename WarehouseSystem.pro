@@ -1,6 +1,6 @@
 QT       += core gui sql
 
-VERSION = 0.10.0
+VERSION = 0.11.0
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

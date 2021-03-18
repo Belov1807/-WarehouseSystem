@@ -3,7 +3,6 @@
 
 #include <QList>
 
-class WarehouseSystemProduct;
 class WarehouseSystemCustomer;
 class WarehouseSystemOrderOnePosition;
 

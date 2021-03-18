@@ -100,3 +100,21 @@ void WarehouseSystemDataBaseManager::insertProduct(WarehouseSystemProduct *_prod
     query.bindValue(":purchase_price", _product->purchasePrice());
     query.exec();
 }
+
+void WarehouseSystemDataBaseManager::deleteCustomer(int _id)
+{
+    QSqlQuery query;
+
+    query.prepare("DELETE FROM customer WHERE id = (:id)");
+    query.bindValue(":id", _id);
+    query.exec();
+}
+
+void WarehouseSystemDataBaseManager::deleteProduct(int _id)
+{
+    QSqlQuery query;
+
+    query.prepare("DELETE FROM product WHERE id = (:id)");
+    query.bindValue(":id", _id);
+    query.exec();
+}

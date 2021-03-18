@@ -48,6 +48,17 @@ public:
      */
     void insertProduct(WarehouseSystemProduct *_product);
 
+    /*!
+     * \brief Удаляет покупателя из БД по идентификатору.
+     * \param _id -идентификатор покупателя.
+     */
+    void deleteCustomer(int _id);
+    /*!
+     * \brief Удаляет продукцию из БД по идентификатору.
+     * \param _id -идентификатор продукции.
+     */
+    void deleteProduct(int _id);
+
 private:
     /*!
      * \brief Подключение к БД.

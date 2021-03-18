@@ -82,3 +82,12 @@ QVariant WarehouseSystemProductTableModel::headerData(int _section,
     }
     return QVariant();
 }
+
+void WarehouseSystemProductTableModel::removeProduct(const QModelIndex &_index)
+{
+    if (_index.isValid())
+    {
+        int id = m_dataManager->idProductByIndex(_index.row());
+        m_dataManager->deleteProduct(id);
+    }
+}

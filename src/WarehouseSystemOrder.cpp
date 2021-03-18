@@ -1,6 +1,5 @@
 #include "WarehouseSystemOrder.h"
 
-#include "WarehouseSystemProduct.h"
 #include "WarehouseSystemCustomer.h"
 #include "WarehouseSystemOrderOnePosition.h"
 

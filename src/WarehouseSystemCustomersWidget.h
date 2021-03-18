@@ -37,6 +37,14 @@ private slots:
      * \brief Слот обновления табличной модели.
      */
     void updateTableSlot();
+    /*!
+     * \brief Слот удаления покупателя.
+     */
+    void removeCustomerSlot();
+    /*!
+     * \brief Слот установления активности кнопки удалить покупателя.
+     */
+    void setEnabledPbRemoveCustomerSlot();
 
 private:
     /*!

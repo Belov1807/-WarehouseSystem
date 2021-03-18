@@ -37,6 +37,14 @@ private slots:
      * \brief Слот обновления табличной модели.
      */
     void updateTableSlot();
+    /*!
+     * \brief Слот удаления продукции.
+     */
+    void removeProductSlot();
+    /*!
+     * \brief Слот установления активности кнопки удалить продукцию.
+     */
+    void setEnabledPbRemoveProductSlot();
 
 private:
     /*!

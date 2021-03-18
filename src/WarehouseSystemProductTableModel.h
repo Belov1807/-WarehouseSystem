@@ -50,6 +50,12 @@ public:
      */
     QVariant headerData(int _section, Qt::Orientation _orientation, int _role = Qt::DisplayRole) const;
 
+    /*!
+     * \brief Удаляет продукцию индексу.
+     * \param _index - индекс продукции.
+     */
+    void removeProduct(const QModelIndex &_index);
+
 private:
     /*!
      * \brief Колонки модели.

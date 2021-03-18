@@ -151,6 +151,17 @@ public:
      */
     void addProduct(QString _name, double _count, bool _unitOfMeasure, double _purchasePrice);
 
+    /*!
+     * \brief Удаляет покупателя по идентификатору.
+     * \param _id - идентификатор покупателя.
+     */
+    void deleteCustomer(int _id);
+    /*!
+     * \brief Удаляет продукцию из БД по идентификатору.
+     * \param _id -идентификатор продукции.
+     */
+    void deleteProduct(int _id);
+
 private:
 
     /*!

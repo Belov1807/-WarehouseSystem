@@ -152,3 +152,13 @@ void WarehouseSystemDataManager::addProduct(QString _name, double _count, bool _
     WarehouseSystemProduct *product = new WarehouseSystemProduct(_name, _count, _unitOfMeasure, _purchasePrice);
     m_dataBaseManager->insertProduct(product);
 }
+
+void WarehouseSystemDataManager::deleteCustomer(int _id)
+{
+    m_dataBaseManager->deleteCustomer(_id);
+}
+
+void WarehouseSystemDataManager::deleteProduct(int _id)
+{
+    m_dataBaseManager->deleteProduct(_id);
+}

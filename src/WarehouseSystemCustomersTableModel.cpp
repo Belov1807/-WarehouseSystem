@@ -82,3 +82,13 @@ QVariant WarehouseSystemCustomersTableModel::headerData(int _section,
     }
     return QVariant();
 }
+
+void  WarehouseSystemCustomersTableModel::removeCustomer(const QModelIndex &_index)
+{
+    if (_index.isValid())
+    {
+        int id = m_dataManager->idCustomerByIndex(_index.row());
+        m_dataManager->deleteCustomer(id);
+    }
+}
+
