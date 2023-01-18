@@ -25,6 +25,19 @@ public:
      */
     ~WarehouseSystemInfoOfCompanyWidget();
 
+signals:
+    /*!
+     * \brief Сигнал закрытия виджета.
+     * \param event - событие закрытия.
+     */
+    void closeEvent(QCloseEvent *event = nullptr) override;
+
+private slots:
+    /*!
+     * \brief Слот закрытия виджета.
+     */
+    void closeSlot();
+
 private:
     /*!
      * \brief Подготавливает соеденения.

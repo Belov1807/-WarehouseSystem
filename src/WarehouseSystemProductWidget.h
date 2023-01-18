@@ -28,6 +28,14 @@ public:
      */
     ~WarehouseSystemProductWidget();
 
+signals:
+    /*!
+     * \brief Сигнал закрытия виджета.
+     * \param event - событие закрытия.
+     */
+    void closeEvent(QCloseEvent *event = nullptr) override;
+
+
 private slots:
     /*!
      * \brief Слот открытия диалога добавления новой продукции.
@@ -45,6 +53,10 @@ private slots:
      * \brief Слот установления активности кнопки удалить продукцию.
      */
     void setEnabledPbRemoveProductSlot();
+    /*!
+     * \brief Слот закрытия виджета.
+     */
+    void closeSlot();
 
 private:
     /*!

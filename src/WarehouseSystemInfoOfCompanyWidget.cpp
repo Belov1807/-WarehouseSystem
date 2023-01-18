@@ -8,6 +8,7 @@ WarehouseSystemInfoOfCompanyWidget::WarehouseSystemInfoOfCompanyWidget(QWidget *
     m_ui->setupUi(this);
 
     prepareConnections();
+    show();
 }
 
 WarehouseSystemInfoOfCompanyWidget::~WarehouseSystemInfoOfCompanyWidget()
@@ -15,7 +16,13 @@ WarehouseSystemInfoOfCompanyWidget::~WarehouseSystemInfoOfCompanyWidget()
     delete m_ui;
 }
 
+void WarehouseSystemInfoOfCompanyWidget::closeSlot()
+{
+    emit closeEvent();
+}
+
 void WarehouseSystemInfoOfCompanyWidget::prepareConnections()
 {
+    connect(m_ui->pbClose, SIGNAL(clicked()), this, SLOT(closeSlot()));
     connect(m_ui->pbClose, SIGNAL(clicked()), this, SLOT(close()));
 }

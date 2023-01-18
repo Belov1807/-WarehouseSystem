@@ -29,6 +29,13 @@ public:
      */
     ~WarehouseSystemArrangeOrderWidget();
 
+signals:
+    /*!
+     * \brief Сигнал закрытия виджета.
+     * \param event - событие закрытия.
+     */
+    void closeEvent(QCloseEvent *event = 0) override;
+
 private slots:
     /*!
      * \brief Слот выбора продукта.
@@ -55,6 +62,10 @@ private slots:
      * \brief Слот обновления комбо бокса выбора покупателя.
      */
     void updateCbCustomerSlot();
+    /*!
+     * \brief Слот закрытия виджета.
+     */
+    void closeSlot();
 
 private:
     /*!

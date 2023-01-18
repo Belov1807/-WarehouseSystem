@@ -27,6 +27,7 @@ void WarehouseSystemProductWidget::prepareConnections()
     connect(m_ui->pbAddProduct, SIGNAL(clicked()), this, SLOT(addProductDialogSlot()));
     connect(m_ui->pbRemoveProduct, SIGNAL(clicked()), this, SLOT(removeProductSlot()));
 
+    connect(m_ui->pbClose, SIGNAL(clicked()), this, SLOT(closeSlot()));
     connect(m_ui->pbClose, SIGNAL(clicked()), this, SLOT(close()));
 }
 
@@ -34,6 +35,7 @@ void WarehouseSystemProductWidget::prepareUi()
 {
     m_ui->pbRemoveProduct->setEnabled(false);
     setTable();
+    show();
 }
 
 void WarehouseSystemProductWidget::addProductDialogSlot()
@@ -101,4 +103,9 @@ void WarehouseSystemProductWidget::setEnabledPbRemoveProductSlot()
     {
         m_ui->pbRemoveProduct->setEnabled(false);
     }
+}
+
+void WarehouseSystemProductWidget::closeSlot()
+{
+    emit closeEvent();
 }

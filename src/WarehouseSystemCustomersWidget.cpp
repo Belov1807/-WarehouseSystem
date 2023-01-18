@@ -27,6 +27,7 @@ void WarehouseSystemCustomersWidget::prepareConnections()
     connect(m_ui->pbAddNewCustomer, SIGNAL(clicked()), this, SLOT(addCustomerDialogSlot()));
     connect(m_ui->pbRemoveCustomer, SIGNAL(clicked()), this, SLOT(removeCustomerSlot()));
 
+    connect(m_ui->pbClose, SIGNAL(clicked()), this, SLOT(closeSlot()));
     connect(m_ui->pbClose, SIGNAL(clicked()), this, SLOT(close()));
 }
 
@@ -34,6 +35,7 @@ void WarehouseSystemCustomersWidget::prepareUi()
 {
     setTable();
     m_ui->pbRemoveCustomer->setEnabled(false);
+    show();
 }
 
 void WarehouseSystemCustomersWidget::addCustomerDialogSlot()
@@ -99,4 +101,9 @@ void WarehouseSystemCustomersWidget::setEnabledPbRemoveCustomerSlot()
     {
         m_ui->pbRemoveCustomer->setEnabled(false);
     }
+}
+
+void WarehouseSystemCustomersWidget::closeSlot()
+{
+    emit closeEvent();
 }

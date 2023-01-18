@@ -32,6 +32,7 @@ void WarehouseSystemArrangeOrderWidget::prepareConnections()
     connect(m_ui->cbCustomers, SIGNAL(currentIndexChanged(int)), this, SLOT(changedCustomerSlot()));
     connect(m_ui->pbAddNewCustomer, SIGNAL(clicked()), this, SLOT(addCustomerDialogSlot()));
 
+    connect(m_ui->pbClose, SIGNAL(clicked()), this, SLOT(closeSlot()));
     connect(m_ui->pbClose, SIGNAL(clicked()), this, SLOT(close()));
 }
 
@@ -61,6 +62,7 @@ void WarehouseSystemArrangeOrderWidget::prepareUi()
     }
 
     setItemCbCustomers();
+    show();
 }
 
 void WarehouseSystemArrangeOrderWidget::changedProductSlot()
@@ -169,6 +171,11 @@ void WarehouseSystemArrangeOrderWidget::updateCbCustomerSlot()
     m_ui->cbCustomers->setCurrentIndex(m_ui->cbCustomers->count() -1);
 
     m_dataManager->customersCount();
+}
+
+void WarehouseSystemArrangeOrderWidget::closeSlot()
+{
+    emit closeEvent();
 }
 
 void WarehouseSystemArrangeOrderWidget::setItemCbCustomers()

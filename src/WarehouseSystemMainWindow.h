@@ -49,6 +49,7 @@ private slots:
      * \brief Слот открытия виджета "Оформление заказа".
      */
     void arrangeOrderWidgetSlot();
+    void closeWindowSlot();
 
 private:
     /*!

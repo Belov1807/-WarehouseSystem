@@ -11,7 +11,8 @@ WarehouseSystemMainWindow::WarehouseSystemMainWindow(QWidget *_parent) :
     m_ui(new Ui::WarehouseSystemMainWindow),
     m_infoOfCompanyWidget(nullptr),
     m_customersWidget(nullptr),
-    m_productsWidget(nullptr)
+    m_productsWidget(nullptr),
+    m_arrangeOrderWidget(nullptr)
 {
     m_ui->setupUi(this);
 
@@ -38,18 +39,10 @@ void WarehouseSystemMainWindow::infoOfCompanyWidgetSlot()
 
     if (m_infoOfCompanyWidget == nullptr)
     {
-        m_infoOfCompanyWidget = new WarehouseSystemInfoOfCompanyWidget();
+        m_infoOfCompanyWidget = new WarehouseSystemInfoOfCompanyWidget(m_ui->widget);
 
-        m_infoOfCompanyWidget->show();
-    }
-    else if (m_infoOfCompanyWidget != nullptr &&
-             m_infoOfCompanyWidget->isVisible() == false)
-    {
-        m_infoOfCompanyWidget->close();
-        delete m_infoOfCompanyWidget;
-
-        m_infoOfCompanyWidget = new WarehouseSystemInfoOfCompanyWidget();
-        m_infoOfCompanyWidget->show();
+        m_ui->frMain->hide();
+        connect(m_infoOfCompanyWidget, SIGNAL(closeEvent()), this, SLOT(closeWindowSlot()));
     }
 }
 
@@ -57,18 +50,10 @@ void WarehouseSystemMainWindow::customersSlot()
 {
     if (m_customersWidget == nullptr)
     {
-        m_customersWidget = new WarehouseSystemCustomersWidget();
+        m_customersWidget = new WarehouseSystemCustomersWidget(m_ui->widget);
 
-        m_customersWidget->show();
-    }
-    else if (m_customersWidget != nullptr &&
-             m_customersWidget->isVisible() == false)
-    {
-        m_customersWidget->close();
-        delete m_customersWidget;
-
-        m_customersWidget = new WarehouseSystemCustomersWidget();
-        m_customersWidget->show();
+        m_ui->frMain->hide();
+        connect(m_customersWidget, SIGNAL(closeEvent()), this, SLOT(closeWindowSlot()));
     }
 }
 
@@ -77,18 +62,10 @@ void WarehouseSystemMainWindow::productsSlot()
 {
     if (m_productsWidget == nullptr)
     {
-        m_productsWidget = new WarehouseSystemProductWidget();
+        m_productsWidget = new WarehouseSystemProductWidget(m_ui->widget);
 
-        m_productsWidget->show();
-    }
-    else if (m_productsWidget != nullptr &&
-             m_productsWidget->isVisible() == false)
-    {
-        m_productsWidget->close();
-        delete m_productsWidget;
-
-        m_productsWidget = new WarehouseSystemProductWidget();
-        m_productsWidget->show();
+        m_ui->frMain->hide();
+        connect(m_productsWidget, SIGNAL(closeEvent()), this, SLOT(closeWindowSlot()));
     }
 }
 
@@ -96,17 +73,37 @@ void WarehouseSystemMainWindow::arrangeOrderWidgetSlot()
 {
     if (m_arrangeOrderWidget == nullptr)
     {
-        m_arrangeOrderWidget = new WarehouseSystemArrangeOrderWidget();
+        m_arrangeOrderWidget = new WarehouseSystemArrangeOrderWidget(m_ui->widget);
 
-        m_arrangeOrderWidget->show();
+        m_ui->frMain->hide();
+        connect(m_arrangeOrderWidget, SIGNAL(closeEvent()), this, SLOT(closeWindowSlot()));
     }
-    else if (m_arrangeOrderWidget != nullptr &&
-             m_arrangeOrderWidget->isVisible() == false)
+}
+
+void WarehouseSystemMainWindow::closeWindowSlot()
+{
+    QObject *senderObject = sender();
+
+    if (senderObject == m_infoOfCompanyWidget)
     {
-        m_arrangeOrderWidget->close();
-        delete m_arrangeOrderWidget;
-
-        m_arrangeOrderWidget = new WarehouseSystemArrangeOrderWidget();
-        m_arrangeOrderWidget->show();
+        delete m_infoOfCompanyWidget;
+        m_infoOfCompanyWidget = nullptr;
     }
+    else if (senderObject == m_customersWidget)
+    {
+        delete m_customersWidget;
+        m_customersWidget = nullptr;
+    }
+    else if (senderObject == m_productsWidget)
+    {
+        delete m_productsWidget;
+        m_productsWidget = nullptr;
+    }
+    else if (senderObject == m_arrangeOrderWidget)
+    {
+        delete m_arrangeOrderWidget;
+        m_arrangeOrderWidget = nullptr;
+    }
+
+    m_ui->frMain->show();
 }

@@ -28,6 +28,13 @@ public:
      */
     ~WarehouseSystemCustomersWidget();
 
+signals:
+    /*!
+     * \brief Сигнал закрытия виджета.
+     * \param event - событие закрытия.
+     */
+    void closeEvent(QCloseEvent *event = nullptr) override;
+
 private slots:
     /*!
      * \brief Слот открытия диалога добавления нового покупателя.
@@ -45,6 +52,10 @@ private slots:
      * \brief Слот установления активности кнопки удалить покупателя.
      */
     void setEnabledPbRemoveCustomerSlot();
+    /*!
+     * \brief Слот закрытия виджета.
+     */
+    void closeSlot();
 
 private:
     /*!
